@@ -8,7 +8,7 @@ namespace AppChamaGas.Model
     public class ProdutoMD
     {
         [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        public int IdProduto { get; set; }
 
         [NotNull]
         public string Descricao { get; set; }
