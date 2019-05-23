@@ -4,9 +4,19 @@
              x:Class="AppChamaGas.View.LoginView">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Tela de Login"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Faça seu acesso"/>
+            <Entry Placeholder="Email"
+                   Text="{Binding Email}"/>
+            <Entry Placeholder="Senha"
+                   IsPassword="True"
+                   Text="{Binding Senha}"/>
+            <Button x:Name="btnEntrar"
+                    Text="Entrar"
+                    Clicked="BtnEntrar_Clicked"/>
+            <Button x:Name="btnPular"
+                    Text="Pular Cadastro"
+                    Clicked="BtnPular_Clicked"/>
+            <Label Text="Não tem cadastro? Clique Aqui"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
