@@ -19,14 +19,21 @@ namespace AppChamaGas.Model
         [NotNull]
         public int IdFornecedor { get; set; }
 
-        [NotNull]
-        public int IdNuvem { get; set; }
+        //[NotNull]
+        //public int IdNuvem { get; set; }
 
-        [NotNull]
-        public DateTime DataAtualizacao { get; set; }
+        //[NotNull]
+        //public DateTime DataAtualizacao { get; set; }
 
         [NotNull]
         public string ImgProd { get; set; }
+
+        [NotNull]
+        public string UnidMedida { get; set; }
+
+        [NotNull]
+        public bool Ativo { get; set; }
+
 
     }
 }

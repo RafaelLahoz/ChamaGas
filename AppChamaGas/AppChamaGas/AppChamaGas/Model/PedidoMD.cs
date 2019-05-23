@@ -8,7 +8,7 @@ namespace AppChamaGas.Model
     public class PedidoMD
     {
         [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        public int IdPedido { get; set; }
 
         [NotNull]
         public int IdPessoa { get; set; }
@@ -23,13 +23,14 @@ namespace AppChamaGas.Model
         public DateTime DataEntrega { get; set; }
 
         [NotNull]
-        public DateTime DataAtualizacao { get; set; }
-
-        [NotNull]
         public DateTime DataAgenda { get; set; }
 
-        [NotNull]
-        public int IdNuvem { get; set; }
+
+        //[NotNull]
+        //public DateTime DataAtualizacao { get; set; }
+
+        //[NotNull]
+        //public int IdNuvem { get; set; }
 
     }
 }

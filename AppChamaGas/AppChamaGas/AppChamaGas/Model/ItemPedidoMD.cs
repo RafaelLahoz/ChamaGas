@@ -17,16 +17,20 @@ namespace AppChamaGas.Model
         public int IdPedido { get; set; }
 
         [NotNull]
-        public int Preco { get; set; }
+        public decimal Preco { get; set; }
 
         [NotNull]
         public int Qtde { get; set; }
 
         [NotNull]
-        public DateTime DataAtualizacao { get; set; }
+        public decimal VlrTotal { get; set; }
 
-        [NotNull]
-        public string ImgProd { get; set; }
+
+        //[NotNull]
+        //public DateTime DataAtualizacao { get; set; }
+
+        //[NotNull]
+        //public string ImgProd { get; set; }
 
     }
 }

@@ -50,10 +50,19 @@ namespace AppChamaGas.Model
         public string ImgPessoa { get; set; }
 
         [NotNull]
-        public int IdNuvem { get; set; }
+        public int Latitude { get; set; }
 
         [NotNull]
-        public DateTime DataAtualizacao { get; set; }
+        public int Longitude { get; set; }
+
+        [NotNull]
+        public bool Ativo { get; set; }
+
+        //[NotNull]
+        //public int IdNuvem { get; set; }
+
+        //[NotNull]
+        //public DateTime DataAtualizacao { get; set; }
 
     }
 }

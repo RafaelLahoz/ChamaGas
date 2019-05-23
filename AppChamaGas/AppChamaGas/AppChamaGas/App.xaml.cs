@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppChamaGas.View;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,11 +8,13 @@ namespace AppChamaGas
 {
     public partial class App : Application
     {
+        
+
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            //Habilita a pagina principal
+            MainPage = new MasterView();
         }
 
         protected override void OnStart()
