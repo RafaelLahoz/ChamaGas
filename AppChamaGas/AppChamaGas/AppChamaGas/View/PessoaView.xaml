@@ -4,9 +4,20 @@
              x:Class="AppChamaGas.View.PessoaView">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Tela Pessoa"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <TableView>
+                <TableRoot Title="Pessoa">
+                    <TableSection>
+                        <ViewCell>
+                            <Entry x:Name="etCEP" Placeholder="Informe o CEP" Unfocused="EtCEP_Unfocused"></Entry>
+                        </ViewCell>
+                        <EntryCell x:Name="etLogradouro" Placeholder="Logradouro" />
+                        <EntryCell x:Name="etComplemento" Placeholder="Complemento"/>
+                        <EntryCell x:Name="etBairro" Placeholder="Bairro" />
+                        <EntryCell x:Name="etLocalidade" Placeholder="Localidade" />
+                        <EntryCell x:Name="etUF" Placeholder="UF" />
+                    </TableSection>
+                </TableRoot>
+            </TableView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
