@@ -8,8 +8,8 @@ namespace AppChamaGas
 {
     public partial class App : Application
     {
-        
 
+        public static string uriAzure = "https://chamagaslahoz.azurewebsites.net";
         public App()
         {
             InitializeComponent();
