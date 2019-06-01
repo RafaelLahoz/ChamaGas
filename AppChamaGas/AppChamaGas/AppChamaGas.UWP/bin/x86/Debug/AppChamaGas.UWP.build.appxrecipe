@@ -28,6 +28,9 @@
     <AppxPackagedFile Include="C:\Users\rafael.ljunior\source\repos\ChamaGas\AppChamaGas\AppChamaGas\AppChamaGas.UWP\bin\x86\Debug\AppChamaGas.UWP.exe">
       <PackagePath>entrypoint\AppChamaGas.UWP.exe</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\rafael.ljunior\.nuget\packages\microsoft.azure.mobile.client\4.1.1\lib\uap10.0\Microsoft.Azure.Mobile.Client.dll">
+      <PackagePath>Microsoft.Azure.Mobile.Client.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\rafael.ljunior\.nuget\packages\newtonsoft.json\12.0.2\lib\netstandard2.0\Newtonsoft.Json.dll">
       <PackagePath>Newtonsoft.Json.dll</PackagePath>
     </AppxPackagedFile>

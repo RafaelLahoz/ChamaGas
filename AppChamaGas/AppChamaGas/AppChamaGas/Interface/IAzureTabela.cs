@@ -8,8 +8,6 @@ namespace AppChamaGas.Interface
     {
         string Id { get; set; }
 
-        public PessoAzureService()
-        {
-        }
+        
     }
 }

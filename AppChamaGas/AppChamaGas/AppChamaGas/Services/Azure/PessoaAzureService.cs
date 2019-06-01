@@ -32,7 +32,7 @@ namespace AppChamaGas.Services.Azure
                 Debug.WriteLine($"Erro Azure:{erro}");
                 return false;
             }
-            
+
         }
         public async Task<bool> AlterarPessoa(Pessoa pessoa)
         {
@@ -63,3 +63,4 @@ namespace AppChamaGas.Services.Azure
 
         }
     }
+}
