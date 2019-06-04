@@ -12,8 +12,8 @@ namespace AppChamaGas.Services
     {
         public const string base_url = "https://reqres.in/api/";
         string api_name;
-        
-        public ReqRes_Service(string api_name) : base (base_url)
+
+        public ReqRes_Service(string api_name) : base(base_url)
         {
             this.api_name = api_name;
         }
@@ -32,14 +32,20 @@ namespace AppChamaGas.Services
             return await Post<T, T>(md);
 
         }
-        public async Task<To> Post<Ti,To>(Ti md)
+        public async Task<To> Post<Ti, To>(Ti md)
         {
             var client = base.GetClient();
             var corpo = GetBody(md);
-            var retorno = await client.PostAsync(this.api_name,corpo);
-            var retornoTexto = await retorno.Content.ReadAsStringAsync();
-            To md_retorno = JsonConvert.DeserializeObject<To>(retornoTexto);
-            return md_retorno;
+            var retorno = await client.PostAsync(this.api_name, corpo);
+
+            if (retorno.IsSuccessStatusCode)
+            {
+                var retornoTexto = await retorno.Content.ReadAsStringAsync();
+                To md_retorno = JsonConvert.DeserializeObject<To>(retornoTexto);
+                return md_retorno;
+            }
+            else
+                throw new Exception($"Ocorreu um erro: {retorno.StatusCode.ToString()}");
         }
 
         private StringContent GetBody<T>(T md)

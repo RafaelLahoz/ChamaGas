@@ -1,4 +1,5 @@
 ﻿using AppChamaGas.Interface;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,5 +22,9 @@ namespace AppChamaGas.Model
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public bool Deleted { get; set; }
+
+        //ignora campo quando converte para texto no formato Json
+        [JsonIgnore]
+        public double Distancia { get; set; }
     }
 }

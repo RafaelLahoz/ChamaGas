@@ -24,7 +24,7 @@ namespace AppChamaGas.View
 
         private void BtnEntrar_Clicked(object sender, EventArgs e)
         {
-            DisplayAlert("Informações", $"Email: { usuario.Email} - Senha: {usuario.Password}", "Fechar");
+            DisplayAlert("Informações", $"Email: { usuario.email} - Senha: {usuario.password}", "Fechar");
         }
 
         private void BtnPular_Clicked(object sender, EventArgs e)
