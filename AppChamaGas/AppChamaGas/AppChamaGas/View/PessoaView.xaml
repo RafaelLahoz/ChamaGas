@@ -6,18 +6,40 @@
         <StackLayout>
             <TableView>
                 <TableRoot Title="Pessoa">
-                    <TableSection>
+                    <TableSection Title="Informações Pessoais">
                         <ViewCell>
-                            <Entry x:Name="etCEP" Placeholder="Informe o CEP" Unfocused="EtCEP_Unfocused"></Entry>
+                            <StackLayout>
+                                <Image x:Name="imgFoto"/>
+                                <Picker x:Name="pkTipo"/>
+                                <Entry x:Name="etRazaoSocial" Placeholder="Razao Social"/>
+                             </StackLayout>
                         </ViewCell>
-                        <EntryCell x:Name="etLogradouro" Placeholder="Logradouro" />
+                    </TableSection>
+                    <TableSection Title="Endereco">
+                        <ViewCell>
+                            <Entry x:Name="etCEP" Placeholder="Informe o CEP" Unfocused="EtCEP_Unfocused"/>
+                        </ViewCell>
+                        <EntryCell x:Name="etLogradouro" Placeholder="Logradouro"/>
+                        <ViewCell>
+                            <Entry x:Name="etNumero" Placeholder="Numero"/>
+                        </ViewCell>
                         <EntryCell x:Name="etComplemento" Placeholder="Complemento"/>
                         <EntryCell x:Name="etBairro" Placeholder="Bairro" />
                         <EntryCell x:Name="etLocalidade" Placeholder="Localidade" />
                         <EntryCell x:Name="etUF" Placeholder="UF" />
                     </TableSection>
+                    <TableSection Title="Usuario">
+                        <ViewCell>
+                            <StackLayout>
+                                <Entry x:Name="etTelefone" Placeholder="Telefone"/>
+                                <Entry x:Name="etEmail" Placeholder="Email"/>
+                                <Entry x:Name="etSenha" Placeholder="Senha"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
                 </TableRoot>
             </TableView>
+            <Button x:Name="btnSalvar" Text="Salvar" Clicked="BtnSalvar_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

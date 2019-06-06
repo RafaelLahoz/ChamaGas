@@ -1,5 +1,6 @@
 ﻿using AppChamaGas.Model;
 using AppChamaGas.Services;
+using AppChamaGas.Services.Azure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,13 @@ namespace AppChamaGas.View
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class PessoaView : ContentPage
 	{
+        //Chama o Servicos do Azure
+        PessoaAzureService pessoaAzureService;
+        Pessoa pessoa;
+    
+
+        //Forma de chamar essa tarefa para todas as tabelas.
+        //AzureService<Pessoa> pessoaServico;
         Base_Service client_cep = new Base_Service(Base_Service.URL_VIACEP);
         //Base_Service client_api = new Base_Service(Base_Service.URL_MINHAAPI);
         ReqRes_Service client_ReqRes_user = new ReqRes_Service("users");
@@ -23,8 +31,11 @@ namespace AppChamaGas.View
         public PessoaView ()
 		{
 			InitializeComponent ();
-            
-		}
+            //Instanciando o serviço criado
+            pessoaAzureService = new PessoaAzureService();
+            pessoa = new Pessoa();
+            ListarTipo();
+        }
 
         private async void EtCEP_Unfocused(object sender, FocusEventArgs e)
         {
@@ -80,6 +91,53 @@ namespace AppChamaGas.View
 
         }
 
+        private async void BtnSalvar_Clicked(object sender, EventArgs e)
+        {
+            var resultado = await SalvarAsync();
+            if (resultado)
+            {
+                await DisplayAlert("Confirma","Registro salvo com sucesso","Fechar");
+            }
+            else
+            {
+                await DisplayAlert("Atenção","Não foi possivel salvar o registro","Fechar");
+            }
+            
+        }
 
+        private async Task<bool> SalvarAsync()
+        {
+            pessoa = new Pessoa();
+            pessoa.Id = "";
+            pessoa.RazaoSocial = etRazaoSocial.Text;
+            pessoa.Tipo = pkTipo.SelectedItem.ToString();
+            pessoa.Endereco = etLogradouro.Text;
+            pessoa.Numero = etNumero.Text;
+            pessoa.Bairro = etBairro.Text;
+            pessoa.CEP = etCEP.Text;
+            pessoa.Cidade = etLocalidade.Text;
+            pessoa.UF = etUF.Text;
+            pessoa.Telefone = etTelefone.Text;
+            pessoa.Email = etEmail.Text;
+            pessoa.Senha = etSenha.Text;
+
+            if (string.IsNullOrWhiteSpace(pessoa.Id))
+            {
+                return await pessoaAzureService.IncluirRegistro(pessoa);
+            }
+            else
+            {
+                return await pessoaAzureService.AlterarRegistro(pessoa);
+            }
+        }
+
+        private void ListarTipo()
+        {
+            List<string> tipos = new List<string>();
+            tipos.Add("Consumidor");
+            tipos.Add("Distribuidor");
+            pkTipo.ItemsSource = tipos;
+            pkTipo.SelectedIndex = 0;
+        }
     }
 }
