@@ -50,7 +50,13 @@ namespace AppChamaGas.View
                 Icone = "",
                 PaginaView = typeof(PessoaView)
             });
-            
+            paginas.Add(new Pagina
+            {
+                Titulo = "Camera",
+                Icone = "",
+                PaginaView = typeof(CameraView)
+            });
+
 
             lvMenu.ItemsSource = paginas;
         }

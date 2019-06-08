@@ -1,4 +1,5 @@
-﻿using AppChamaGas.View;
+﻿using AppChamaGas.DataAccess;
+using AppChamaGas.View;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,6 +14,7 @@ namespace AppChamaGas
         public App()
         {
             InitializeComponent();
+            Conexao.Initialize();
             //Habilita a pagina principal
             MainPage = new MasterView();
         }
