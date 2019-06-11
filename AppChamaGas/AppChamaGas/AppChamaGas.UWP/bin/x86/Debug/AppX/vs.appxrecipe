@@ -19,7 +19,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>C:\Users\rafael.ljunior\source\repos\ChamaGas\AppChamaGas\AppChamaGas\AppChamaGas.UWP\bin\x86\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>872B4225D7AA7C7F997F1926B30CF0791219C469F928DC7897DB4C5A2897F06A</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>AF5DAE98467D5F7354C907010131C63675C7383EAE51C44A0534C29D4F722131</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>c5e697a4-fd1b-4f0a-9383-849e402d061f_1.0.0.0_x86__vzy63tgsqhe1t</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>c5e697a4-fd1b-4f0a-9383-849e402d061f_vzy63tgsqhe1t!App</RegisteredUserModeAppID>
     <RegisteredPackageID>c5e697a4-fd1b-4f0a-9383-849e402d061f</RegisteredPackageID>
@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\rafael.ljunior\source\repos\ChamaGas\AppChamaGas\AppChamaGas\AppChamaGas.UWP\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-06-06T01:30:16.374</Modified>
+      <Modified>2019-06-10T22:48:56.136</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\rafael.ljunior\source\repos\ChamaGas\AppChamaGas\AppChamaGas\AppChamaGas.UWP\bin\x86\Debug\AppChamaGas.UWP.exe">
       <PackagePath>entrypoint\AppChamaGas.UWP.exe</PackagePath>
-      <Modified>2019-06-06T01:30:14.523</Modified>
+      <Modified>2019-06-10T22:48:46.957</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\rafael.ljunior\.nuget\packages\microsoft.azure.mobile.client\4.1.1\lib\uap10.0\Microsoft.Azure.Mobile.Client.dll">
       <PackagePath>Microsoft.Azure.Mobile.Client.dll</PackagePath>
@@ -53,6 +53,10 @@
     <AppxPackagedFile Include="C:\Users\rafael.ljunior\.nuget\packages\pclext.filestorage\1.4.1.1\lib\uap10.0\PCLExt.FileStorage.dll">
       <PackagePath>PCLExt.FileStorage.dll</PackagePath>
       <Modified>2018-07-09T01:34:50.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\rafael.ljunior\.nuget\packages\plugin.permissions\3.0.0.12\lib\uap10.0.10240\Plugin.Permissions.dll">
+      <PackagePath>Plugin.Permissions.dll</PackagePath>
+      <Modified>2018-05-16T04:38:36.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\rafael.ljunior\.nuget\packages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.1.5\runtimes\win10-x86\nativeassets\uap10.0.15138\clrcompression.dll">
       <PackagePath>clrcompression.dll</PackagePath>
@@ -734,6 +738,10 @@
       <PackagePath>SQLitePCLRaw.provider.e_sqlite3.dll</PackagePath>
       <Modified>2018-05-02T14:44:20.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\rafael.ljunior\.nuget\packages\xam.plugin.media\4.0.1.5\lib\uap10.0.10240\Plugin.Media.dll">
+      <PackagePath>Plugin.Media.dll</PackagePath>
+      <Modified>2018-07-23T23:55:22.000</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\rafael.ljunior\.nuget\packages\xamarin.essentials\1.0.1\lib\uap10.0.16299\Xamarin.Essentials.dll">
       <PackagePath>Xamarin.Essentials.dll</PackagePath>
       <Modified>2019-01-14T18:29:50.000</Modified>
@@ -756,7 +764,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\rafael.ljunior\source\repos\ChamaGas\AppChamaGas\AppChamaGas\AppChamaGas\bin\Debug\netstandard2.0\AppChamaGas.dll">
       <PackagePath>AppChamaGas.dll</PackagePath>
-      <Modified>2019-06-06T01:30:09.783</Modified>
+      <Modified>2019-06-08T01:17:12.257</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\rafael.ljunior\source\repos\ChamaGas\AppChamaGas\AppChamaGas\AppChamaGas.UWP\Assets\LargeTile.scale-100.png">
       <PackagePath>Assets\LargeTile.scale-100.png</PackagePath>
@@ -903,11 +911,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\rafael.ljunior\source\repos\ChamaGas\AppChamaGas\AppChamaGas\AppChamaGas.UWP\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2019-06-06T01:30:14.348</Modified>
+      <Modified>2019-06-10T22:48:46.708</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\rafael.ljunior\source\repos\ChamaGas\AppChamaGas\AppChamaGas\AppChamaGas.UWP\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2019-06-06T01:30:14.349</Modified>
+      <Modified>2019-06-10T22:48:46.709</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.16299.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -919,11 +927,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\rafael.ljunior\source\repos\ChamaGas\AppChamaGas\AppChamaGas\AppChamaGas.UWP\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2019-06-06T01:20:05.838</Modified>
+      <Modified>2019-06-10T22:48:52.051</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\rafael.ljunior\source\repos\ChamaGas\AppChamaGas\AppChamaGas\AppChamaGas.UWP\bin\x86\Debug\Core\AppChamaGas.UWP.exe">
       <PackagePath>AppChamaGas.UWP.exe</PackagePath>
-      <Modified>2019-06-06T01:30:16.366</Modified>
+      <Modified>2019-06-10T22:48:56.128</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

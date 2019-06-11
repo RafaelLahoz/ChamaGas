@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppChamaGas.View.PessoaView">
     <ContentPage.Content>
-        <StackLayout>
+        <ScrollView>
             <TableView>
                 <TableRoot Title="Pessoa">
                     <TableSection Title="Informações Pessoais">
@@ -34,12 +34,13 @@
                                 <Entry x:Name="etTelefone" Placeholder="Telefone"/>
                                 <Entry x:Name="etEmail" Placeholder="Email"/>
                                 <Entry x:Name="etSenha" Placeholder="Senha"/>
+                                <Button x:Name="btnSalvar" Text="Salvar" Clicked="BtnSalvar_Clicked"/>
                             </StackLayout>
                         </ViewCell>
                     </TableSection>
                 </TableRoot>
             </TableView>
-            <Button x:Name="btnSalvar" Text="Salvar" Clicked="BtnSalvar_Clicked"/>
-        </StackLayout>
+            
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

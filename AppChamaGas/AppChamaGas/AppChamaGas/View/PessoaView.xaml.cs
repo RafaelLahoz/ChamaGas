@@ -60,32 +60,32 @@ namespace AppChamaGas.View
             var retorno = await client_ReqRes_user.Post<User_ReqRes>(md);
             var atualiza = await client_ReqRes_user.Put<User_ReqRes>(md);
 
-            await this.DisplayAlert("Meu retorno", $"{retorno.id},{retorno.createdAt},{retorno.name},{retorno.job}", "Entendi");
+            //await this.DisplayAlert("Meu retorno", $"{retorno.id},{retorno.createdAt},{retorno.name},{retorno.job}", "Entendi");
 
-            await this.DisplayAlert("Atualizacao", $"{atualiza.updatedAt},{atualiza.name},{atualiza.job}", "Certinho");
+            //await this.DisplayAlert("Atualizacao", $"{atualiza.updatedAt},{atualiza.name},{atualiza.job}", "Certinho");
 
             //await DisplayAlert("Dados", $"Id: { user_ret.data.FirstOrDefault().id} - Email: { user_ret.data.FirstOrDefault().email}", "Fechar");
-            var usuarioentrada = new Usuario
-            {
-                email = "eve.holt2@reqres.in",
-                password = "pistol"
-            };
+            //var usuarioentrada = new Usuario
+            //{
+            //    email = "eve.holt2@reqres.in",
+            //    password = "pistol"
+            //};
 
-            try
-            {
-                var usuariosaida = await client_ReqRes_register.Post<Usuario, Usuario>(usuarioentrada);
+            //try
+            //{
+            //    var usuariosaida = await client_ReqRes_register.Post<Usuario, Usuario>(usuarioentrada);
 
-                await this.DisplayAlert("Usuario Saida", $"{usuariosaida.Token}", "Feito");
+            //    await this.DisplayAlert("Usuario Saida", $"{usuariosaida.Token}", "Feito");
 
-                var usuarioPut = await client_ReqRes_register.Post<Usuario, Usuario>(usuarioentrada);
+            //    var usuarioPut = await client_ReqRes_register.Post<Usuario, Usuario>(usuarioentrada);
 
 
-            }
-            catch (Exception ex)
-            {
+            //}
+            //catch (Exception ex)
+            //{
 
-                await this.DisplayAlert("Erro", ex.Message, "OK");
-            }
+            //    await this.DisplayAlert("Erro", ex.Message, "OK");
+            //}
             
             //var reg = await client_ReqRes_register.Post<Usuario, Usuario>();
 

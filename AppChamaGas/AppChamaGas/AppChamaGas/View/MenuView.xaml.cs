@@ -40,7 +40,7 @@ namespace AppChamaGas.View
             });
             paginas.Add(new Pagina
             {
-                Titulo = "Produto",
+                Titulo = "Produtos",
                 Icone = "",
                 PaginaView = typeof(PessoaView)
             });
@@ -55,6 +55,12 @@ namespace AppChamaGas.View
                 Titulo = "Camera",
                 Icone = "",
                 PaginaView = typeof(CameraView)
+            });
+            paginas.Add(new Pagina
+            {
+                Titulo = "Usuario",
+                Icone = "",
+                PaginaView = typeof(UsuarioView)
             });
 
 
