@@ -15,6 +15,7 @@ namespace AppChamaGas.View
     public partial class UsuarioView : ContentPage
     {
         PessoaAzureService pessoaAzureServico;
+        IEnumerable<Pessoa> usuarios;
         public UsuarioView()
         {
             InitializeComponent();
@@ -22,36 +23,38 @@ namespace AppChamaGas.View
             ListarUsuariosAsync(vBusca.Text);
         }
 
-        private async void ListarUsuariosAsync(string busca)
+        private async void ListarUsuariosAsync(string busca = null)
         {
-            vCarregando.IsVisible = true;
+
             lvUsuarios.IsRefreshing = true;
             try
             {
 
-            //Fez a consulta no banco de dados no serviço de nuvem do Azure
-            var usuarios = await pessoaAzureServico.ListarAsync();
+                //Fez a consulta no banco de dados no serviço de nuvem do Azure
+                usuarios = await pessoaAzureServico.ListarAsync();
 
-            //Verifica de existe um texto para a busca
-            if (!string.IsNullOrWhiteSpace(busca))
-            {
-                usuarios
-                    .Where(p =>
-                    p.RazaoSocial.StartsWith(busca) ||
-                    p.Endereco.Contains(busca) ||
-                    p.CEP == busca)
-                    .OrderBy(p => p.RazaoSocial);
-            }
-            
-            //Popula a lista com o resultado da consulta
-            lvUsuarios.ItemsSource = usuarios;
+                //Verifica de existe um texto para a busca
+                if (!string.IsNullOrWhiteSpace(busca))
+                {
+                    usuarios
+                        .Where(p =>
+                        p.RazaoSocial.Contains(busca) ||
+                        p.Endereco.Contains(busca) ||
+                        p.CEP == busca);
+
+                }
+
+                //Popula a lista com o resultado da consulta
+                lvUsuarios.ItemsSource = usuarios
+                        .OrderBy(p => p.RazaoSocial)
+                        .ToList();
             }
             catch
             {
                 await DisplayAlert("Atenção", "Não foi possível fazer a consulta", "Fechar");
             }
             lvUsuarios.IsRefreshing = false;
-            vCarregando.IsVisible = false;
+
         }
         //Executa ao carregar o formulario
         protected override void OnAppearing()
@@ -69,6 +72,41 @@ namespace AppChamaGas.View
         private void LvUsuarios_Refreshing(object sender, EventArgs e)
         {
             ListarUsuariosAsync(vBusca.Text);
+        }
+
+        private async void BtnRemover_Clicked(object sender, EventArgs e)
+        {
+            //Pega o valor do menu da lista CommandParameter
+            string id = ((MenuItem)sender).CommandParameter.ToString();
+            //Pega o item (objeto) da lista selecionada
+            Pessoa usuario = usuarios.FirstOrDefault(p => p.Id == id);
+            if (usuario != null)
+            {
+                //bool retorno = await pessoaAzureServico.ExcluirRegistro(usuario);
+                bool retorno = await pessoaAzureServico.ExcluirRegistro(usuario);
+                if (retorno)
+                {
+                    await DisplayAlert("Sucesso", "Registro excluido", "Fechar");
+                    ListarUsuariosAsync();
+                    return;
+                }
+            }
+            await DisplayAlert("Atenção", "Não foi possivel escluir o registro", "Fechar");
+
+
+        }
+
+        private void BtnAdicionar_Clicked(object sender, EventArgs e)
+        {
+            MasterView.NavegacaoMasterDetail.Detail.Navigation.PushAsync(new PessoaView());
+        }
+
+        private void LvUsuarios_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            //Pega o item selecionado "e" na lista e mostra na tela
+            Pessoa usuario = e.SelectedItem as Pessoa;
+            //Vai para nova pagina (PessoaView) enviando o usuario
+            MasterView.NavegacaoMasterDetail.Detail.Navigation.PushAsync(new PessoaView(usuario));
         }
     }
 }

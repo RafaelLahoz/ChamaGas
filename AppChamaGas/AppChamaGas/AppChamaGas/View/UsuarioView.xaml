@@ -3,23 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppChamaGas.View.UsuarioView">
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="btnAdicionar" Text="Adicionar" Icon="seuicone.png"/>
+        <ToolbarItem x:Name="btnAdicionar" Text="Adicionar" Icon="adicionar.png" Clicked="BtnAdicionar_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <ActivityIndicator x:Name="vCarregando"
-                               VerticalOptions="Center"
-                               HorizontalOptions="Center"
-                               IsVisible="False" 
-                               IsEnabled="True" 
-                               IsRunning="{Binding Source={x:Reference lvUsuarios}, Path=IsRefreshing}"/>
+            <!--Activity será usado em outro comando-->
+            
             <SearchBar x:Name="vBusca" SearchButtonPressed="VBusca_SearchButtonPressed"/>
-            <ListView x:Name="lvUsuarios" HasUnevenRows="True" Refreshing="LvUsuarios_Refreshing">
+            <ListView x:Name="lvUsuarios" HasUnevenRows="True" Refreshing="LvUsuarios_Refreshing" ItemSelected="LvUsuarios_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.ContextActions>
-                                <MenuItem x:Name="btnRemover" Text="Remover" Icon="meuicone.png"/>
+                                <MenuItem x:Name="btnRemover" Text="Remover" Icon="remover.png" CommandParameter="{Binding Id}" Clicked="BtnRemover_Clicked"/>
                             </ViewCell.ContextActions>
                             <StackLayout>
                                 <Label Text="{Binding RazaoSocial}"/>

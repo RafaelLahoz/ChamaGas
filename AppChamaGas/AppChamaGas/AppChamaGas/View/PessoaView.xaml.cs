@@ -28,12 +28,20 @@ namespace AppChamaGas.View
         ReqRes_Service client_ReqRes_register = new ReqRes_Service("register");
         User_ReqRes md = new User_ReqRes();
 
-        public PessoaView ()
+        //Metodo construtor vai receber com oparamentro uma pessoa
+
+        public PessoaView (Pessoa usuario = null)
 		{
 			InitializeComponent ();
             //Instanciando o serviço criado
             pessoaAzureService = new PessoaAzureService();
-            pessoa = new Pessoa();
+            if(usuario == null)
+            {
+                usuario = new Pessoa();
+            }
+            
+            pessoa = usuario;
+            this.BindingContext = pessoa;
             ListarTipo();
         }
 
@@ -43,7 +51,7 @@ namespace AppChamaGas.View
 
             this.etCEP.Text = cep_ret.CEP;
             this.etLogradouro.Text = cep_ret.Logradouro;
-            this.etComplemento.Text = cep_ret.Complemento;
+            //this.etComplemento.Text = cep_ret.Complemento;
             this.etBairro.Text = cep_ret.Bairro;
             this.etLocalidade.Text = cep_ret.Localidade;
             this.etUF.Text = cep_ret.Uf;
@@ -93,22 +101,26 @@ namespace AppChamaGas.View
 
         private async void BtnSalvar_Clicked(object sender, EventArgs e)
         {
+            vCarregando.IsVisible = true;
+            vCarregando.IsRunning = true;
             var resultado = await SalvarAsync();
             if (resultado)
             {
                 await DisplayAlert("Confirma","Registro salvo com sucesso","Fechar");
+                await MasterView.NavegacaoMasterDetail.Detail.Navigation.PopAsync();
             }
             else
             {
                 await DisplayAlert("Atenção","Não foi possivel salvar o registro","Fechar");
             }
-            
+            vCarregando.IsRunning = false;
+            vCarregando.IsVisible = false;
         }
 
         private async Task<bool> SalvarAsync()
         {
             pessoa = new Pessoa();
-            pessoa.Id = "";
+            pessoa.Id = tcId.Text;
             pessoa.RazaoSocial = etRazaoSocial.Text;
             pessoa.Tipo = pkTipo.SelectedItem.ToString();
             pessoa.Endereco = etLogradouro.Text;
@@ -121,6 +133,7 @@ namespace AppChamaGas.View
             pessoa.Email = etEmail.Text;
             pessoa.Senha = etSenha.Text;
 
+            bool retorno = false;
             if (string.IsNullOrWhiteSpace(pessoa.Id))
             {
                 return await pessoaAzureService.IncluirRegistro(pessoa);
@@ -129,6 +142,8 @@ namespace AppChamaGas.View
             {
                 return await pessoaAzureService.AlterarRegistro(pessoa);
             }
+            
+
         }
 
         private void ListarTipo()
