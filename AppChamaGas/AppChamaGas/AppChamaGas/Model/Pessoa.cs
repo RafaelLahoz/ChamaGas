@@ -1,12 +1,15 @@
-﻿using AppChamaGas.Interface;
+﻿using AppChamaGas.Helper;
+using AppChamaGas.Interface;
+using AppChamaGas.ViewModel;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace AppChamaGas.Model
 {
-    public class Pessoa : IAzureTabela
+    public class Pessoa : ViewModelBase, IAzureTabela
     {
         public string Id { get; set; }
         public string Tipo { get; set; }
@@ -21,8 +24,12 @@ namespace AppChamaGas.Model
         public string Email { get; set; }
         public string Senha { get; set; }
 
-
-        public string Foto { get; set; }
+        private string foto;
+        public string Foto
+        {
+            get { return foto; }
+            set { SetProperty(ref foto, value); }
+        }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public bool Deleted { get; set; }
@@ -30,5 +37,38 @@ namespace AppChamaGas.Model
         //ignora campo quando converte para texto no formato Json
         [JsonIgnore]
         public double Distancia { get; set; }
+
+        private bool botaoVisivel;
+        [JsonIgnore]
+        public bool BotaoVisivel
+        {
+            get { return botaoVisivel; }
+            set { SetProperty (ref botaoVisivel, value); }
+        }
+
+        private bool imagemVisivel;
+        [JsonIgnore]
+        public bool ImagemVisivel
+        {
+            get { return imagemVisivel; }
+            set { SetProperty(ref imagemVisivel, value); }
+        }
+
+        [JsonIgnore]
+        public Command TiraFotoCommand { get; set; }
+
+        public Pessoa()
+        {
+            TiraFotoCommand = new Command(TiraFoto);
+            BotaoVisivel = true;
+            ImagemVisivel = false;
+        }
+        public async void TiraFoto()
+        {
+            FotoMD md = await Photo.TiraFoto();
+            BotaoVisivel = false;
+            ImagemVisivel = true;
+            this.Foto = md.pathGaleria;
+        }
     }
 }

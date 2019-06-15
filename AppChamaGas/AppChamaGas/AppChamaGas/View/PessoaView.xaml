@@ -4,11 +4,18 @@
              x:Class="AppChamaGas.View.PessoaView">
     <ContentPage.Content>
         <StackLayout>
-            <TableView>
+            <TableView HasUnevenRows="True">
                 <TableRoot Title="Pessoa">
                     <TableSection Title="Informações Pessoais">
                         <TextCell x:Name="tcId" Text="{Binding Id}"/>
-                        <ImageCell x:Name="imgFoto" ImageSource="{Binding Foto}"/>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="Foto"></Label>
+                                <Button Text="Tirar Foto" Command="{Binding TiraFotoCommand}" IsVisible="{Binding BotaoVisivel}"/>
+                                <Image x:Name="imgFoto" Source="{Binding Foto}" Aspect="AspectFit" IsVisible="{Binding ImagemVisivel}" HeightRequest="100" WidthRequest="100"/>
+                            </StackLayout>
+                        </ViewCell>
+                        
                         <EntryCell x:Name="etRazaoSocial" Placeholder="Nome ou Razao Social" Text="{Binding RazaoSocial}"/>
                     </TableSection>
                     <TableSection Title="Endereco">

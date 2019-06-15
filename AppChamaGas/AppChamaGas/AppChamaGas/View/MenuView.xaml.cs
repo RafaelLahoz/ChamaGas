@@ -10,15 +10,15 @@ using Xamarin.Forms.Xaml;
 
 namespace AppChamaGas.View
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MenuView : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class MenuView : ContentPage
+    {
         List<Pagina> paginas;
         private object pagina;
 
-        public MenuView ()
-		{
-			InitializeComponent ();
+        public MenuView()
+        {
+            InitializeComponent();
             IniciaLista();
 
         }
@@ -78,13 +78,23 @@ namespace AppChamaGas.View
                 //Inicia a navegacao
                 MasterView.NavegacaoMasterDetail.IsPresented = false;
                 MasterView.NavegacaoMasterDetail.Detail.Navigation.PopToRootAsync();
+
                 //Criação da pagina view
-                Page paginaview = Activator.CreateInstance(pagina.PaginaView) as Page;
+                Page paginaview = null;
+                if (pagina.PaginaView == typeof(PessoaView))
+                    paginaview = new PessoaView(new Pessoa());
+                else if (pagina.PaginaView == typeof(CameraView))
+                    paginaview = new CameraView();
+                else
+                    paginaview = Activator.CreateInstance(pagina.PaginaView) as Page;
+
+
+
                 //Navega para a pagina view
                 MasterView.NavegacaoMasterDetail.Detail.Navigation.PushAsync(paginaview);
                 //Desativa o item selecionado
                 lvMenu.SelectedItem = null;
-               
+
             }
         }
     }

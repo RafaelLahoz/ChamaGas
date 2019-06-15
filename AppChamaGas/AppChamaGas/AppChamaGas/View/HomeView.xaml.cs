@@ -23,7 +23,10 @@ namespace AppChamaGas.View
 
         protected async override void OnAppearing()
         {
-            var mPosition = new Location(-20.8141467, -49.3758587);
+            //var mPosition = new Location(-20.8141467, -49.3758587);
+            //Pega localizacao atual da pessoa que esta usando o app
+            var request = new GeolocationRequest(GeolocationAccuracy.Best);
+            var mPosition = await Geolocation.GetLocationAsync(request);
 
             List<Pessoa> fornecedores = (List<Pessoa>) await pessoa_service.List(etBusca.Text);
 
@@ -37,6 +40,21 @@ namespace AppChamaGas.View
             lvForns.ItemsSource = fornOrdenado;
 
             base.OnAppearing();
+
+            //await Map.OpenAsync(mPosition);
+        }
+
+        private async void LvForns_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            Pessoa pessoaSelecionada = (Pessoa)e.Item;
+            await Map.OpenAsync(pessoaSelecionada.Latitude, pessoaSelecionada.Longitude
+                , new MapLaunchOptions
+                {
+                    Name = "Localização Modo",
+                    NavigationMode = NavigationMode.Driving,
+                });
+            
+            
         }
     }
 }
