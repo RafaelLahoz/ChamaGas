@@ -1,10 +1,12 @@
-﻿using System;
+﻿using AppChamaGas.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace AppChamaGas.Model
 {
-    public class Pagina
+    public class Pagina : ViewModelBase
     {
         //Propriedades
         public string Titulo { get; set; }
@@ -13,5 +15,12 @@ namespace AppChamaGas.Model
 
         public Type PaginaView { get; set; }
 
+        private Color corLetra;
+
+        public Color CorLetra
+        {
+            get { return corLetra; }
+            set { SetProperty(ref corLetra, value); }
+        }
     }
 }

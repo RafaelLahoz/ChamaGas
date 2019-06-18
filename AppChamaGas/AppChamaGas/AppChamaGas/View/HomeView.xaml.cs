@@ -9,6 +9,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Linq;
+using AppChamaGas.Helper;
 
 namespace AppChamaGas.View
 {
@@ -19,6 +20,7 @@ namespace AppChamaGas.View
 		public HomeView ()
 		{
 			InitializeComponent ();
+            meuIcone.Text = Font_Index.home;
 		}
 
         protected async override void OnAppearing()
@@ -55,6 +57,11 @@ namespace AppChamaGas.View
                 });
             
             
+        }
+
+        private void Icon_Tapped(object sender, EventArgs e)
+        {
+            this.DisplayAlert("Aviso", "Era uma LABEL, mas pode ser clicado também!", "OK");
         }
     }
 }

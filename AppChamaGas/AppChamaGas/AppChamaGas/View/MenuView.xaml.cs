@@ -1,4 +1,5 @@
-﻿using AppChamaGas.Model;
+﻿using AppChamaGas.Helper;
+using AppChamaGas.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,37 +30,37 @@ namespace AppChamaGas.View
             paginas.Add(new Pagina
             {
                 Titulo = "Pessoa",
-                Icone = "",
+                Icone = Font_Index.user,
                 PaginaView = typeof(PessoaView)
             });
             paginas.Add(new Pagina
             {
                 Titulo = "Fornecedor",
-                Icone = "",
+                Icone = Font_Index.forumbee,
                 PaginaView = typeof(LoginView)
             });
             paginas.Add(new Pagina
             {
                 Titulo = "Produtos",
-                Icone = "",
+                Icone = Font_Index.product_hunt,
                 PaginaView = typeof(PessoaView)
             });
             paginas.Add(new Pagina
             {
                 Titulo = "Lista de Pedidos",
-                Icone = "",
+                Icone = Font_Index.compass,
                 PaginaView = typeof(PessoaView)
             });
             paginas.Add(new Pagina
             {
                 Titulo = "Camera",
-                Icone = "",
+                Icone = Font_Index.camera,
                 PaginaView = typeof(CameraView)
             });
             paginas.Add(new Pagina
             {
                 Titulo = "Usuario",
-                Icone = "",
+                Icone = Font_Index.user_secret,
                 PaginaView = typeof(UsuarioView)
             });
 
@@ -67,14 +68,18 @@ namespace AppChamaGas.View
             lvMenu.ItemsSource = paginas;
         }
 
-        private void LvMenu_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private void LvMenu_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            foreach (Pagina item in lvMenu.ItemsSource)
+            {
+                item.CorLetra = Color.Gray;
+            }
             //Seleciona a pagina
-            var pagina = e.SelectedItem as Pagina;
+            var pagina = e.Item as Pagina;
             //Verifica o  retorno da selecao
             if (pagina != null)
             {
-
+                pagina.CorLetra = Color.Black;
                 //Inicia a navegacao
                 MasterView.NavegacaoMasterDetail.IsPresented = false;
                 MasterView.NavegacaoMasterDetail.Detail.Navigation.PopToRootAsync();

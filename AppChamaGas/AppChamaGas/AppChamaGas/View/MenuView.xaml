@@ -1,16 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:AppChamaGas.Components"
              x:Class="AppChamaGas.View.MenuView">
     <ContentPage.Content>
         <StackLayout>
             <ListView x:Name="lvMenu"
-                      ItemSelected="LvMenu_ItemSelected">
+                      ItemTapped="LvMenu_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ImageCell
-                            ImageSource="{Binding Icone}"
-                            Text="{Binding Titulo}"/>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <c:Icon Text="{Binding Icone}" Margin="20, 5" TextColor="{Binding CorLetra}" VerticalOptions="Center"/>
+                                <Label Text="{Binding Titulo}" TextColor="{Binding CorLetra}" VerticalOptions="Center"/>
+                            </StackLayout>
+                            
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>                
             </ListView>

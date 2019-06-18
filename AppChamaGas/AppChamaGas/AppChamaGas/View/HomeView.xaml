@@ -1,11 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:AppChamaGas.Components"
              x:Class="AppChamaGas.View.HomeView"
              BackgroundColor="WhiteSmoke">
     <ContentPage.Content>
         <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
             <Entry x:Name="etBusca"></Entry>
+            <c:Icon x:Name="meuIcone" FontSize="40" TextColor="Blue">
+                <c:Icon.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Icon_Tapped"/>
+                </c:Icon.GestureRecognizers>
+            </c:Icon>
             <ListView x:Name="lvForns" HasUnevenRows="True" ItemTapped="LvForns_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
