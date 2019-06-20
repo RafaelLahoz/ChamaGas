@@ -7,7 +7,7 @@ namespace AppChamaGas.Model
 {
     public class FotoMD
     {
-        [PrimaryKey, AutoIncrement,NotNull]
+        [PrimaryKey, AutoIncrement, NotNull]
         public int id { get; set; }
         [NotNull]
         public byte[] fotoArray { get; set; }
@@ -15,6 +15,5 @@ namespace AppChamaGas.Model
         public string pathGaleria { get; set; }
         [NotNull]
         public string pathInterna { get; set; }
-
     }
 }

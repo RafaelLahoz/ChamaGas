@@ -29,9 +29,9 @@ namespace AppChamaGas.View
             paginas = new List<Pagina>();
             paginas.Add(new Pagina
             {
-                Titulo = "Pessoa",
+                Titulo = "Usuário",
                 Icone = Font_Index.user,
-                PaginaView = typeof(PessoaView)
+                PaginaView = typeof(UsuarioView)
             });
             paginas.Add(new Pagina
             {
@@ -57,12 +57,7 @@ namespace AppChamaGas.View
                 Icone = Font_Index.camera,
                 PaginaView = typeof(CameraView)
             });
-            paginas.Add(new Pagina
-            {
-                Titulo = "Usuario",
-                Icone = Font_Index.user_secret,
-                PaginaView = typeof(UsuarioView)
-            });
+            
 
 
             lvMenu.ItemsSource = paginas;

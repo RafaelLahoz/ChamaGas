@@ -3,20 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppChamaGas.View.LoginView">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+            <Image Source="fire.png"
+                   Aspect="AspectFit"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
             <Label Text="Faça seu acesso"/>
-            <Entry Placeholder="Email"
+            <Entry x:Name="vEmail" Placeholder="Email"
                    Text="{Binding Email}"/>
-            <Entry Placeholder="Senha"
+            <Entry x:Name="vSenha" Placeholder="Senha"
                    IsPassword="True"
                    Text="{Binding Senha}"/>
+            <Label x:Name="vErro" IsVisible="False" TextColor="Red" VerticalTextAlignment="Center"/>
             <Button x:Name="btnEntrar"
                     Text="Entrar"
                     Clicked="BtnEntrar_Clicked"/>
-            <Button x:Name="btnPular"
+            <Button x:Name="Registrar"
+                    Text="Registre-se"
+                    Clicked="Registrar_Clicked"/>
+            <!--<Button x:Name="btnPular"
                     Text="Pular Cadastro"
                     Clicked="BtnPular_Clicked"/>
-            <Label Text="Não tem cadastro? Clique Aqui"/>
+            <Label Text="Não tem cadastro? Clique Aqui"/>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

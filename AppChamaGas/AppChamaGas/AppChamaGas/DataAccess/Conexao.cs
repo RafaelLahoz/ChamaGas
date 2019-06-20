@@ -25,7 +25,7 @@ namespace AppChamaGas.DataAccess
         {
             var conn = Get();
             conn.BeginTransaction();
-            conn.CreateTable<ProdutoMD>();
+            conn.CreateTable<Produto>();
             conn.Commit();
             conn.Close();
         }
