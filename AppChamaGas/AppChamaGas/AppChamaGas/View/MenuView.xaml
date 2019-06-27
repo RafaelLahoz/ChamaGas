@@ -5,6 +5,13 @@
              x:Class="AppChamaGas.View.MenuView">
     <ContentPage.Content>
         <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Image x:Name="vFoto" Aspect="Fill" HeightRequest="48" WidthRequest="48"/>
+                <StackLayout>
+                    <Label x:Name="vNome"/>
+                    <Label x:Name="vEmail"/>
+                </StackLayout>
+            </StackLayout>
             <ListView x:Name="lvMenu"
                       ItemTapped="LvMenu_ItemTapped">
                 <ListView.ItemTemplate>

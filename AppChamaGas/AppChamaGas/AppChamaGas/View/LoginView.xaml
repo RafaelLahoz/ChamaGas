@@ -18,9 +18,13 @@
             <Button x:Name="btnEntrar"
                     Text="Entrar"
                     Clicked="BtnEntrar_Clicked"/>
-            <Button x:Name="Registrar"
+            <Button x:Name="btnRegistrar"
                     Text="Registre-se"
-                    Clicked="Registrar_Clicked"/>
+                    Clicked="btnRegistrar_Clicked"/>
+            <ActivityIndicator x:Name="aiCarregar"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="CenterAndExpand"
+                               IsVisible="False"/>
             <!--<Button x:Name="btnPular"
                     Text="Pular Cadastro"
                     Clicked="BtnPular_Clicked"/>

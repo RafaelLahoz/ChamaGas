@@ -1,5 +1,6 @@
 ﻿using AppChamaGas.Model;
 using AppChamaGas.Services.Azure;
+using MonkeyCache.SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace AppChamaGas.View
 	public partial class LoginView : ContentPage
 	{
         PessoaAzureService pessoaAzureService;
-        UsuarioModel usuarioModel;
+        UsuarioModel usuarioModel { get; set; }
 
 		public LoginView ()
 		{
@@ -27,6 +28,7 @@ namespace AppChamaGas.View
 
         private async void BtnEntrar_Clicked(object sender, EventArgs e)
         {
+            CarregarTela(true);
             //Validar dados
             if (ValidarDados())
             {
@@ -34,24 +36,39 @@ namespace AppChamaGas.View
                 //Verificação da Autenticação do Usuario
                 if (pessoa != null)
                 {
-                    usuarioModel.Id = pessoa.Id;
-                    usuarioModel.Email = pessoa.Email;
-                    usuarioModel.Senha = pessoa.Senha;
-                    usuarioModel.Permissao = pessoa.Tipo;
-                    usuarioModel.Autenticado = true;
+                    //usuarioModel.Id = pessoa.Id;
+                    //usuarioModel.Email = pessoa.Email;
+                    //usuarioModel.Senha = pessoa.Senha;
+                    //usuarioModel.Permissao = pessoa.Tipo;
+                    //usuarioModel.Autenticado = true;
+                    //Cache de dados para a pessoa
                     //Salvar no banco de dados
+                    Barrel.Current.Add(key: "pessoa", data: pessoa, expireIn: TimeSpan.FromMinutes(3));
+
+
                     //Define a nova MainPage (pagina principal)
                     App.Current.MainPage = new MasterView();
+                    CarregarTela(false);
+                }
+                else
+                {
+                    CarregarTela(false);
+                    await DisplayAlert("Atenção", "Conta não encontrado", "Fechar");
+                  
                 }
             }
             else
             {
+                CarregarTela(false);
                 await DisplayAlert("Atenção", "Email ou Senha inválidos", "Fechar");
+                
             }
+            CarregarTela(false);
+            return;
             
         }
 
-        private void Registrar_Clicked(object sender, EventArgs e)
+        private void btnRegistrar_Clicked(object sender, EventArgs e)
         {
             //MasterView.NavegacaoMasterDetail.Detail.Navigation.PushAsync(new PessoaView());
             this.Navigation.PushModalAsync(new PessoaView());
@@ -67,16 +84,47 @@ namespace AppChamaGas.View
                 vErro.Text = "Atenção, informe os seus dados corretamente";
                 return false;
             }
-            else if (vSenha.Text.Length > 8)
+            else if (vSenha.Text.Length < 8)
             {
                 vErro.Text = "Atenção, senha inválida (menor que 8 caracteres)";
                 return false;
             }
-            else
+            vErro.Text = string.Empty;
+            return true;
+        }
+
+        private void CarregarTela(bool resultado)
+        {
+            //Default
+            aiCarregar.IsVisible = true;
+            aiCarregar.IsRunning = true;
+            vSenha.IsEnabled = false;
+            vEmail.IsEnabled = false;
+            btnEntrar.IsEnabled = false;
+            btnRegistrar.IsEnabled = false;
+            //Verificacao Resultado
+            if (!resultado)
             {
-               
-                return true;
+                aiCarregar.IsVisible = false;
+                aiCarregar.IsRunning = false;
+                vSenha.IsEnabled = true;
+                vEmail.IsEnabled = true;
+                btnEntrar.IsEnabled = true;
+                btnRegistrar.IsEnabled = true;
             }
+        }
+        private void VerificarLogin()
+        {
+            var usuarioLogado = Barrel.Current.Get<Pessoa>("pessoa");
+            if (usuarioLogado != null)
+            {
+                App.Current.MainPage = new MasterView();
+            }
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            VerificarLogin();
         }
     }
 }
