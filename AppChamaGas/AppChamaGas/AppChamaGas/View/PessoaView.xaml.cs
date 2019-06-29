@@ -1,6 +1,7 @@
 ﻿using AppChamaGas.Model;
 using AppChamaGas.Services;
 using AppChamaGas.Services.Azure;
+using MonkeyCache.SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,9 +36,9 @@ namespace AppChamaGas.View
 			InitializeComponent ();
             //Instanciando o serviço criado
             pessoaAzureService = new PessoaAzureService();
-            if(usuario == null)
+            if(usuario == null || string.IsNullOrEmpty(usuario.Id))
             {
-                usuario = new Pessoa();
+                usuario = Barrel.Current.Get<Pessoa>("pessoa");
             }
             
             pessoa = usuario;

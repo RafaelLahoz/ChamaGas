@@ -31,36 +31,42 @@ namespace AppChamaGas.View
         public void IniciaLista()
         {
             paginas = new List<Pagina>();
+            //paginas.Add(new Pagina
+            //{
+            //    Titulo = "Usuário",
+            //    Icone = Font_Index.user,
+            //    PaginaView = typeof(UsuarioView)
+            //});
+            //paginas.Add(new Pagina
+            //{
+            //    Titulo = "Login",
+            //    Icone = Font_Index.user,
+            //    PaginaView = typeof(LoginView)
+            //});
             paginas.Add(new Pagina
             {
-                Titulo = "Usuário",
+                Titulo = "Perfil",
                 Icone = Font_Index.user,
-                PaginaView = typeof(UsuarioView)
-            });
-            paginas.Add(new Pagina
-            {
-                Titulo = "Fornecedor",
-                Icone = Font_Index.forumbee,
-                PaginaView = typeof(LoginView)
+                PaginaView = typeof(PessoaView)
             });
             paginas.Add(new Pagina
             {
                 Titulo = "Produtos",
-                Icone = Font_Index.product_hunt,
-                PaginaView = typeof(PessoaView)
+                Icone = Font_Index.box,
+                PaginaView = typeof(ProdutosView)
             });
             paginas.Add(new Pagina
             {
                 Titulo = "Lista de Pedidos",
-                Icone = Font_Index.compass,
-                PaginaView = typeof(PessoaView)
+                Icone = Font_Index.list,
+                PaginaView = typeof(PedidoView)
             });
-            paginas.Add(new Pagina
-            {
-                Titulo = "Camera",
-                Icone = Font_Index.camera,
-                PaginaView = typeof(CameraView)
-            });
+            //paginas.Add(new Pagina
+            //{
+            //    Titulo = "Camera",
+            //    Icone = Font_Index.camera,
+            //    PaginaView = typeof(CameraView)
+            //});
             
 
 
@@ -81,7 +87,7 @@ namespace AppChamaGas.View
                 pagina.CorLetra = Color.Black;
                 //Inicia a navegacao
                 MasterView.NavegacaoMasterDetail.IsPresented = false;
-                MasterView.NavegacaoMasterDetail.Detail.Navigation.PopToRootAsync();
+                //MasterView.NavegacaoMasterDetail.Detail.Navigation.PopToRootAsync();
 
                 //Criação da pagina view
                 Page paginaview = null;
@@ -95,7 +101,8 @@ namespace AppChamaGas.View
 
 
                 //Navega para a pagina view
-                MasterView.NavegacaoMasterDetail.Detail.Navigation.PushAsync(paginaview);
+                //MasterView.NavegacaoMasterDetail.Detail.Navigation.PushAsync(paginaview);
+                MasterView.NavegacaoMasterDetail.Detail = new NavigationPage(paginaview);
                 //Desativa o item selecionado
                 lvMenu.SelectedItem = null;
 

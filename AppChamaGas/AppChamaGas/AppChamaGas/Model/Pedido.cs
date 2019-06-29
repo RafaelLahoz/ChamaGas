@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using AppChamaGas.Interface;
+using Newtonsoft.Json;
 
 namespace AppChamaGas.Model
 {
@@ -13,7 +14,13 @@ namespace AppChamaGas.Model
         public DateTime DataEmissao { get; set; }
         public DateTime DataAgenda { get; set; }
         public DateTime DataEntrega { get; set; }
-        
+
+        [JsonIgnore,SQLite.Ignore]
+        public string ValorTotal { get; set; }
+        [JsonIgnore, SQLite.Ignore]
+        public string NomeFornecedor { get; set; }
+                                
+
         //Metodo Construtor
         public Pedido(string clienteId, string fornecedorId)
         {
