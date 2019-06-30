@@ -46,19 +46,19 @@ namespace AppChamaGas.View
             paginas.Add(new Pagina
             {
                 Titulo = "Perfil",
-                Icone = Font_Index.user,
+                Icone = Font_Index.user_secret,
                 PaginaView = typeof(PessoaView)
             });
             paginas.Add(new Pagina
             {
                 Titulo = "Produtos",
-                Icone = Font_Index.box,
+                Icone = Font_Index.cart_arrow_down,
                 PaginaView = typeof(ProdutosView)
             });
             paginas.Add(new Pagina
             {
                 Titulo = "Lista de Pedidos",
-                Icone = Font_Index.list,
+                Icone = Font_Index.clipboard_list,
                 PaginaView = typeof(PedidoView)
             });
             //paginas.Add(new Pagina

@@ -5,31 +5,46 @@
              BackgroundColor="WhiteSmoke">
     <ContentPage.Content>
         <StackLayout>
-            <Label x:Name="lblTitulo" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center" Margin="0,15"/>
-            <ListView x:Name="lvProdutos" HasUnevenRows="True" SeparatorVisibility="None">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid BackgroundColor="White" Margin="10,10,10,10" Padding="10">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="80"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <Label Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Text="{Binding Foto}"/>
-                                <Label Grid.Column="1" Grid.Row="0" Text="{Binding Descricao}"/>
-                                <Label Grid.Column="1" Grid.Row="1" Text="{Binding FornecedorNome}"/>
-                                <Label Grid.Column="1" Grid.Row="2" Text="{Binding Distancia}" HorizontalOptions="Start"/>
-                                <Label Grid.Column="1" Grid.Row="2" Text="{Binding Preco}" HorizontalOptions="End"/>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <Button x:Name="btnAdd" 
+                    Text="+" 
+                    TextColor="White"
+                    FontAttributes="Bold" 
+                    HorizontalOptions="End" 
+                    VerticalOptions="Center" 
+                    BorderRadius="30"
+                    BackgroundColor="#C5E1A5"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    IsVisible="False"
+                    Margin="0,3,3,0"
+                    Clicked="BtnAdd_Clicked"/>
+            <Label x:Name="lblTitulo" FontAttributes="Bold" FontSize="Large" TextColor="#33691E" HorizontalOptions="Center" Margin="0,15"/>
+            <Frame BackgroundColor="#C5E1A5">
+                <ListView x:Name="lvProdutos" HasUnevenRows="True" SeparatorVisibility="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid BackgroundColor="White" Margin="2,2,2,2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Text="{Binding Foto}"/>
+                                    <Label Grid.Column="1" Grid.Row="0" Text="{Binding Descricao}" TextColor="#33691E"/>
+                                    <Label Grid.Column="1" Grid.Row="1" Text="{Binding FornecedorNome}" TextColor="#33691E" FontSize="Large" FontAttributes="Bold"/>
+                                    <Label Grid.Column="1" Grid.Row="2" Text="{Binding Distancia}" TextColor="#33691E" HorizontalOptions="Start"/>
+                                    <Label Grid.Column="1" Grid.Row="2" Text="{Binding Preco}" TextColor="#33691E" HorizontalOptions="End" Margin="0,0,10,0"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

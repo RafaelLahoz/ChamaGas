@@ -6,12 +6,13 @@
     <ContentPage.Content>
         <StackLayout>
             <TableView HasUnevenRows="True">
-                <TableRoot Title="Pessoa">
-                    <TableSection Title="Informações Pessoais">
-                        <TextCell x:Name="tcId" Text="{Binding Id}"/>
+                    <TableRoot Title="Pessoa">
+                    <TableSection>
+                        <TextCell x:Name="tcTit1" Text="Informações Pessoais" TextColor="#33691E"/>
+                        <TextCell x:Name="tcId" Text="{Binding Id}" TextColor="Transparent"/>
                         <ViewCell>
                             <StackLayout>
-                                <Label Text="Foto"></Label>
+                                <Label Text="Foto" TextColor="#33691E" FontSize="Large" Margin="15,0,0,0"/>
                                 <components:Btn_Icon Text="{Binding TextoBotaoFoto}" 
                                                      Command="{Binding TiraFotoCommand}" 
                                                      IsVisible="{Binding BotaoVisivel}"
@@ -21,12 +22,12 @@
                                 <Image x:Name="imgFoto" Source="{Binding Foto}" Aspect="AspectFit" IsVisible="{Binding ImagemVisivel}" HeightRequest="100" WidthRequest="100"/>
                             </StackLayout>
                         </ViewCell>
-                        
                         <EntryCell x:Name="etRazaoSocial" Placeholder="Nome ou Razao Social" Text="{Binding RazaoSocial}"/>
                     </TableSection>
-                    <TableSection Title="Endereco">
+                    <TableSection>
+                        <TextCell x:Name="tcTit2" Text="Endereço" TextColor="#33691E"/>
                         <ViewCell>
-                            <Entry x:Name="etCEP" Placeholder="Informe o CEP" Unfocused="EtCEP_Unfocused" Text="{Binding CEP}"/>
+                            <Entry x:Name="etCEP" Placeholder="Informe o CEP" Unfocused="EtCEP_Unfocused" Margin="15,0,0,0" Text="{Binding CEP}"/>
                         </ViewCell>
                         <EntryCell x:Name="etLogradouro" Placeholder="Logradouro" Text="{Binding Endereco}"/>
                         <EntryCell x:Name="etNumero" Placeholder="Numero" Text="{Binding Numero}"/>
@@ -35,17 +36,18 @@
                         <EntryCell x:Name="etLocalidade" Placeholder="Localidade" Text="{Binding Cidade}"/>
                         <EntryCell x:Name="etUF" Placeholder="UF" Text="{Binding UF}"/>
                     </TableSection>
-                    <TableSection Title="Usuario">
+                    <TableSection>
+                        <TextCell x:Name="tcTit3" Text="Usuario" TextColor="#33691E"/>
                         <EntryCell x:Name="etTelefone" Placeholder="Telefone" Text="{Binding Telefone}"/>
                         <EntryCell x:Name="etEmail" Placeholder="Email" Text="{Binding Email}"/>
                         <EntryCell x:Name="etSenha" Placeholder="Senha" Text="{Binding Senha}"/>
                         <ViewCell>
-                            <Picker x:Name="pkTipo" SelectedItem="{Binding Tipo}"/>
+                            <Picker x:Name="pkTipo" SelectedItem="{Binding Tipo}" Margin="15,0,0,0"/>
                         </ViewCell>
                     </TableSection>
                 </TableRoot>
             </TableView>
-            <Button x:Name="btnSalvar" Text="Salvar" Clicked="BtnSalvar_Clicked"/>
+            <Button x:Name="btnSalvar" Text="Salvar" BackgroundColor="#C5E1A5" Clicked="BtnSalvar_Clicked"/>
             <ActivityIndicator x:Name="vCarregando"
                                VerticalOptions="Center"
                                HorizontalOptions="Center"

@@ -8,7 +8,7 @@
                    Aspect="AspectFit"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"/>
-            <Label Text="Faça seu acesso"/>
+            <Label Text="Faça seu acesso" HorizontalOptions="Center" TextColor="#33691E" FontSize="Large" FontAttributes="Bold"/>
             <Entry x:Name="vEmail" Placeholder="Email"
                    Text="{Binding Email}"/>
             <Entry x:Name="vSenha" Placeholder="Senha"
@@ -19,7 +19,7 @@
                     Text="Entrar"
                     Clicked="BtnEntrar_Clicked"/>
             <Button x:Name="btnRegistrar"
-                    Text="Registre-se"
+                    Text="Cadastre-se"
                     Clicked="btnRegistrar_Clicked"/>
             <ActivityIndicator x:Name="aiCarregar"
                                VerticalOptions="CenterAndExpand"

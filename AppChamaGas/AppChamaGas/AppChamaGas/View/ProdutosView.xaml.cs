@@ -29,26 +29,32 @@ namespace AppChamaGas.View
             base.OnAppearing();
 
             lblTitulo.Text = eh_Distribuidor ? "Meus Produtos" : "Lista de Produtos";
+            btnAdd.IsVisible = eh_Distribuidor ? true : false;
 
             lvProdutos.ItemsSource = new List<Produto>
             {
                 new Produto
                 {
                     Descricao = "Gas do Bom",
-                    Distancia = "5km",
+                    Distancia = "5,0 km",
                     FornecedorNome = "Rui Gas",
                     Preco = 70.00,
+                    //Foto = "RuiGas.png",
                 },
                 new Produto
                 {
                     Descricao = "Gas do Quase Bom",
-                    Distancia = "7km",
+                    Distancia = "7,0 km",
                     FornecedorNome = "Joao do Gas",
                     Preco = 80.00,
+                    //Foto = "Ultragaz.png",
                 }
             };
         }
 
+        private void BtnAdd_Clicked(object sender, EventArgs e)
+        {
 
+        }
     }
 }

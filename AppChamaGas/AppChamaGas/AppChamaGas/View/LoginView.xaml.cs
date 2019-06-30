@@ -43,7 +43,7 @@ namespace AppChamaGas.View
                     //usuarioModel.Autenticado = true;
                     //Cache de dados para a pessoa
                     //Salvar no banco de dados
-                    Barrel.Current.Add(key: "pessoa", data: pessoa, expireIn: TimeSpan.FromMinutes(3));
+                    Barrel.Current.Add(key: "pessoa", data: pessoa, expireIn: TimeSpan.FromMinutes(2));
 
 
                     //Define a nova MainPage (pagina principal)
