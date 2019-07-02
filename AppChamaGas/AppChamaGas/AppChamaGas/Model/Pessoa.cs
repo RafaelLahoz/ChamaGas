@@ -6,13 +6,19 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
+using AppChamaGas.Helper;
 
 namespace AppChamaGas.Model
 {
     public class Pessoa : ViewModelBase, IAzureTabela
     {
         public string Id { get; set; }
-        public string Tipo { get; set; }
+        private string tipo;
+        public string Tipo
+        {
+            get { return tipo; }
+            set { SetProperty(ref tipo, value); }
+        }
         public string RazaoSocial { get; set; }
         public string Endereco { get; set; }
         public string Numero { get; set; }
@@ -24,11 +30,41 @@ namespace AppChamaGas.Model
         public string Email { get; set; }
         public string Senha { get; set; }
 
+        //byte[] convertido para string
         private string foto;
         public string Foto
         {
             get { return foto; }
             set { SetProperty(ref foto, value); }
+        }
+        //byte [] array
+        private byte[] fotoByte;
+        [JsonIgnore]
+        public byte[] FotoByte
+        {
+            get
+            {
+                if (fotoByte == null && Foto != null)
+                    FotoByte = Convert.FromBase64String(Foto);
+                return fotoByte;
+            }
+            set
+            {
+                SetProperty(ref fotoByte, value);
+                if (value != null)
+                {
+                    FotoSource = value.ToImageSource();
+                    Foto = Convert.ToBase64String(value);
+                }
+            }
+        }
+        //imageSource
+        private ImageSource fotoSource;
+        [JsonIgnore]
+        public ImageSource FotoSource
+        {
+            get { return fotoSource; }
+            set { SetProperty(ref fotoSource, value); }
         }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
@@ -43,7 +79,7 @@ namespace AppChamaGas.Model
         public bool BotaoVisivel
         {
             get { return botaoVisivel; }
-            set { SetProperty (ref botaoVisivel, value); }
+            set { SetProperty(ref botaoVisivel, value); }
         }
 
         private bool imagemVisivel;
@@ -72,7 +108,8 @@ namespace AppChamaGas.Model
             FotoMD md = await Photo.TiraFoto();
             BotaoVisivel = false;
             ImagemVisivel = true;
-            this.Foto = md.pathGaleria;
+
+            this.FotoByte = md.fotoArray;
         }
     }
 }

@@ -44,6 +44,9 @@ namespace AppChamaGas.View
             pessoa = usuario;
             this.BindingContext = pessoa;
             ListarTipo();
+
+            imgFoto.Source = pessoa.FotoSource;
+            pkTipo.SelectedItem = pessoa.Tipo;
         }
 
         private async void EtCEP_Unfocused(object sender, FocusEventArgs e)
@@ -133,6 +136,8 @@ namespace AppChamaGas.View
             pessoa.Telefone = etTelefone.Text;
             pessoa.Email = etEmail.Text;
             pessoa.Senha = etSenha.Text;
+            var pessoa_Bindada = ((Pessoa)this.BindingContext);
+            pessoa.FotoByte = pessoa_Bindada.FotoByte;
 
             bool retorno = false;
             if (string.IsNullOrWhiteSpace(pessoa.Id))
@@ -141,6 +146,8 @@ namespace AppChamaGas.View
             }
             else
             {
+                Barrel.Current.Empty("pessoa");
+                Barrel.Current.Add("pessoa", pessoa, TimeSpan.FromMinutes(3));
                 return await pessoaAzureService.AlterarRegistro(pessoa);
             }
             

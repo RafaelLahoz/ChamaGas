@@ -13,13 +13,15 @@
                         <ViewCell>
                             <StackLayout>
                                 <Label Text="Foto" TextColor="#33691E" FontSize="Large" Margin="15,0,0,0"/>
+                                <Image x:Name="imgFoto" Source="{Binding FotoSource}" 
+                                       Aspect="AspectFit" 
+                                       HeightRequest="100" WidthRequest="100"/>
                                 <components:Btn_Icon Text="{Binding TextoBotaoFoto}" 
                                                      Command="{Binding TiraFotoCommand}" 
-                                                     IsVisible="{Binding BotaoVisivel}"
+                                                     HorizontalOptions="End" VerticalOptions="End"
                                                      FontSize="30"
                                                      BackgroundColor="Transparent"
                                                      TextColor="Gray"/>
-                                <Image x:Name="imgFoto" Source="{Binding Foto}" Aspect="AspectFit" IsVisible="{Binding ImagemVisivel}" HeightRequest="100" WidthRequest="100"/>
                             </StackLayout>
                         </ViewCell>
                         <EntryCell x:Name="etRazaoSocial" Placeholder="Nome ou Razao Social" Text="{Binding RazaoSocial}"/>

@@ -39,6 +39,8 @@ namespace AppChamaGas.View
             else
                 pedidos = pedidos.Where(p => p.ClienteId == usuarioLogado.Id);
 
+           
+
             foreach (var pedido in pedidos)
             {
                 Pessoa pessoa = eh_distribuidor 

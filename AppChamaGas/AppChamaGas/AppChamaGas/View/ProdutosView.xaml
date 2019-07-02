@@ -5,7 +5,7 @@
              BackgroundColor="WhiteSmoke">
     <ContentPage.Content>
         <StackLayout>
-            <Button x:Name="btnAdd" 
+            <!--<Button x:Name="btnAdd" 
                     Text="+" 
                     TextColor="White"
                     FontAttributes="Bold" 
@@ -17,7 +17,7 @@
                     HeightRequest="40"
                     IsVisible="False"
                     Margin="0,3,3,0"
-                    Clicked="BtnAdd_Clicked"/>
+                    Clicked="BtnAdd_Clicked"/>-->
             <Label x:Name="lblTitulo" FontAttributes="Bold" FontSize="Large" TextColor="#33691E" HorizontalOptions="Center" Margin="0,15"/>
             <Frame BackgroundColor="#C5E1A5">
                 <ListView x:Name="lvProdutos" HasUnevenRows="True" SeparatorVisibility="None">
@@ -34,7 +34,8 @@
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
-                                    <Label Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Text="{Binding Foto}"/>
+                                    <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Source="{Binding FotoSource}" 
+                                           WidthRequest="70" HeightRequest="70" Aspect="AspectFit"/>
                                     <Label Grid.Column="1" Grid.Row="0" Text="{Binding Descricao}" TextColor="#33691E"/>
                                     <Label Grid.Column="1" Grid.Row="1" Text="{Binding FornecedorNome}" TextColor="#33691E" FontSize="Large" FontAttributes="Bold"/>
                                     <Label Grid.Column="1" Grid.Row="2" Text="{Binding Distancia}" TextColor="#33691E" HorizontalOptions="Start"/>
