@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppChamaGas.View.IntroView">
+    <ContentPage.Content>
+        <ScrollView Orientation="Both">
+            <FlexLayout>
+                <Frame WidthRequest="300"
+                   HeightRequest="400">
+                    <FlexLayout Direction="Column">
+                        <Image Source="https://picsum.photos/id/237/200/300"/>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Lorem Ipsum" FontSize="Large" FontAttributes="Bold" TextColor="Red"/>
+                                    <Span Text="Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker." FontSize="Default" TextColor="Green"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </FlexLayout>
+                </Frame>
+                <Frame WidthRequest="300"
+                   HeightRequest="400">
+                    <FlexLayout Direction="Column">
+                        <Image Source="https://picsum.photos/id/237/200/300"/>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Mussum Ipsum" FontSize="Large" FontAttributes="Bold" TextColor="Red"/>
+                                    <Span Text="Mussum Ipsum, cacilds vidis litro abertis. Quem manda na minha terra sou euzis! Mauris nec dolor in eros commodo tempor. Aenean aliquam molestie leo, vitae iaculis nisl. Leite de capivaris, leite de mula manquis sem cabeça. Paisis, filhis, espiritis santis." FontSize="Default" TextColor="Green"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </FlexLayout>
+                </Frame>
+                <Frame WidthRequest="300"
+                   HeightRequest="600">
+                    <FlexLayout Direction="Column">
+                        <Image Source="https://picsum.photos/id/237/200/300"/>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Ipsum Engenharia" FontSize="Large" FontAttributes="Bold" TextColor="Red"/>
+                                    <Span Text="A IPSUM surgiu em 2017 na cidade de Bauru com a iniciativa de dois amigos." FontSize="Default" TextColor="Green"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Button x:Name="btnFechar"
+                            Text="Fechar"
+                            Clicked="BtnFechar_Clicked"/>
+                        
+                    </FlexLayout>
+                    
+                </Frame>
+                
+                
+            </FlexLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -26,6 +26,17 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>                
             </ListView>
+            <Label x:Name="lblAjuda"
+                   Margin="10,0,0,15"
+                   Text="Ajuda"
+                   BackgroundColor="Gray"
+                   VerticalOptions="End">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="gesSair"
+                                          Tapped="GesSair_Tapped_1"
+                                          NumberOfTapsRequired="2"/>
+                </Label.GestureRecognizers>
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

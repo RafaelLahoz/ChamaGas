@@ -63,11 +63,17 @@ namespace AppChamaGas.View
             });
             //paginas.Add(new Pagina
             //{
+            //    Titulo = "Ajuda",
+            //    Icone = Font_Index.clipboard_list,
+            //    PaginaView = typeof(IntroView)
+            //});
+            //paginas.Add(new Pagina
+            //{
             //    Titulo = "Camera",
             //    Icone = Font_Index.camera,
             //    PaginaView = typeof(CameraView)
             //});
-            
+
 
 
             lvMenu.ItemsSource = paginas;
@@ -120,6 +126,21 @@ namespace AppChamaGas.View
                 vFoto.Source = ImageSource.FromUri(uri);
 
             }
+        }
+
+        private void GesSair_Tapped(object sender, EventArgs e)
+        {
+            //finaliza a sessão do usuario
+            Barrel.Current.Empty("pessoa");
+
+            //Fechar o App
+
+            App.Current.Quit();
+        }
+
+        private void GesSair_Tapped_1(object sender, EventArgs e)
+        {
+            this.Navigation.PushModalAsync(new IntroView());
         }
     }
 }
