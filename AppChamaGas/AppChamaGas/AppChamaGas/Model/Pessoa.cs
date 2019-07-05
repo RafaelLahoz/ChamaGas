@@ -106,10 +106,15 @@ namespace AppChamaGas.Model
         public async void TiraFoto()
         {
             FotoMD md = await Photo.TiraFoto();
+
+            if (md == null)
+                return;
+
             BotaoVisivel = false;
             ImagemVisivel = true;
 
             this.FotoByte = md.fotoArray;
+            this.FotoSource = md.fotoArray.ToImageSource();
         }
     }
 }

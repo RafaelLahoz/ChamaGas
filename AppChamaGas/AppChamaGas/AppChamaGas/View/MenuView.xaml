@@ -26,14 +26,14 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>                
             </ListView>
-            <Label x:Name="lblAjuda"
+            <Label x:Name="lblSair"
                    Margin="10,0,0,15"
-                   Text="Ajuda"
+                   Text="Sair"
                    BackgroundColor="Gray"
                    VerticalOptions="End">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer x:Name="gesSair"
-                                          Tapped="GesSair_Tapped_1"
+                                          Tapped="GesSair_Tapped"
                                           NumberOfTapsRequired="2"/>
                 </Label.GestureRecognizers>
             </Label>

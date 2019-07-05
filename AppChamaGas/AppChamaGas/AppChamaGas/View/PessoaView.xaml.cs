@@ -1,4 +1,5 @@
-﻿using AppChamaGas.Model;
+﻿using AppChamaGas.Helper;
+using AppChamaGas.Model;
 using AppChamaGas.Services;
 using AppChamaGas.Services.Azure;
 using MonkeyCache.SQLite;
@@ -17,7 +18,7 @@ namespace AppChamaGas.View
 	public partial class PessoaView : ContentPage
 	{
         //Chama o Servicos do Azure
-        PessoaAzureService pessoaAzureService;
+        PessoaAzureService pessoaAzureService = new PessoaAzureService();
         Pessoa pessoa;
     
 
@@ -34,19 +35,21 @@ namespace AppChamaGas.View
         public PessoaView (Pessoa usuario = null)
 		{
 			InitializeComponent ();
+            ListarTipo();
+
             //Instanciando o serviço criado
-            pessoaAzureService = new PessoaAzureService();
-            if(usuario == null || string.IsNullOrEmpty(usuario.Id))
-            {
-                usuario = Barrel.Current.Get<Pessoa>("pessoa");
-            }
+            if (usuario == null || string.IsNullOrEmpty(usuario.Id))
+               usuario = Barrel.Current.Get<Pessoa>("pessoa");
+            
+            if (usuario == null)
+                usuario = new Pessoa();
             
             pessoa = usuario;
             this.BindingContext = pessoa;
-            ListarTipo();
 
+            pessoa.FotoSource = pessoa.FotoByte.ToImageSource();
             imgFoto.Source = pessoa.FotoSource;
-            pkTipo.SelectedItem = pessoa.Tipo;
+            //pkTipo.SelectedItem = pessoa.Tipo;
         }
 
         private async void EtCEP_Unfocused(object sender, FocusEventArgs e)

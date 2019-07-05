@@ -47,6 +47,10 @@ namespace AppChamaGas.View
         private async void BtnFoto_Clicked(object sender, EventArgs e)
         {
             var md = await Photo.TiraFoto("produto.jpg");
+
+            if (md == null)
+                return;
+
             this.produtoBC.FotoByte = md.fotoArray;
         }
     }

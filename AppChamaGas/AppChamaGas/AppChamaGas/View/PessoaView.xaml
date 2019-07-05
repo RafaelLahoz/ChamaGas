@@ -42,7 +42,9 @@
                         <TextCell x:Name="tcTit3" Text="Usuario" TextColor="#33691E"/>
                         <EntryCell x:Name="etTelefone" Placeholder="Telefone" Text="{Binding Telefone}"/>
                         <EntryCell x:Name="etEmail" Placeholder="Email" Text="{Binding Email}"/>
-                        <EntryCell x:Name="etSenha" Placeholder="Senha" Text="{Binding Senha}"/>
+                        <ViewCell>
+                            <Entry x:Name="etSenha" Placeholder="Senha" Text="{Binding Senha}" IsPassword="True" Margin="15,0,0,0"/>
+                        </ViewCell>
                         <ViewCell>
                             <Picker x:Name="pkTipo" SelectedItem="{Binding Tipo}" Margin="15,0,0,0"/>
                         </ViewCell>

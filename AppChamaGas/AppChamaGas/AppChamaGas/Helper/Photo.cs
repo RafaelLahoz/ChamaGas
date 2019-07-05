@@ -15,13 +15,17 @@ namespace AppChamaGas.Helper
 
             var photo = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions()
             {
-                Name = "test.jpg",
+                Name = nomeFoto,
                 Directory = dir,
                 SaveToAlbum = saveInAlbum,
                 CompressionQuality = 10,
                 PhotoSize = Plugin.Media.Abstractions.PhotoSize.Small,
                 CustomPhotoSize = 10,
             });
+
+            if (photo == null)
+                return null;
+
             md.pathGaleria = photo.AlbumPath;
             md.pathInterna = photo.Path;
             md.fotoArray = photo.GetStream().ToByteArray();

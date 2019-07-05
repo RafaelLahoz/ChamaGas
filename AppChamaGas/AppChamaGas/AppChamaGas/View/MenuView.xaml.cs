@@ -61,12 +61,12 @@ namespace AppChamaGas.View
                 Icone = Font_Index.clipboard_list,
                 PaginaView = typeof(PedidoView)
             });
-            //paginas.Add(new Pagina
-            //{
-            //    Titulo = "Ajuda",
-            //    Icone = Font_Index.clipboard_list,
-            //    PaginaView = typeof(IntroView)
-            //});
+            paginas.Add(new Pagina
+            {
+                Titulo = "Ajuda",
+                Icone = Font_Index.clipboard_list,
+                PaginaView = typeof(IntroView)
+            });
             //paginas.Add(new Pagina
             //{
             //    Titulo = "Camera",
@@ -122,8 +122,8 @@ namespace AppChamaGas.View
             {
                 vNome.Text = pessoa.RazaoSocial;
                 vEmail.Text = pessoa.Email;
-                Uri uri = new Uri(@"https://picsum.photos/id/237/200/300");
-                vFoto.Source = ImageSource.FromUri(uri);
+                pessoa.FotoSource = pessoa.FotoByte.ToImageSource();
+                vFoto.Source = pessoa.FotoSource;
 
             }
         }
@@ -135,12 +135,12 @@ namespace AppChamaGas.View
 
             //Fechar o App
 
-            App.Current.Quit();
+            App.Current.MainPage = new LoginView();
         }
 
-        private void GesSair_Tapped_1(object sender, EventArgs e)
-        {
-            this.Navigation.PushModalAsync(new IntroView());
-        }
+        //private void GesSair_Tapped_1(object sender, EventArgs e)
+        //{
+        //    this.Navigation.PushModalAsync(new IntroView());
+        //}
     }
 }

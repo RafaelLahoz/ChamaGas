@@ -62,6 +62,9 @@ namespace AppChamaGas.ViewModel
         {
             var md = await Photo.TiraFoto();
 
+            if (md == null)
+                return;
+
             var conn = Conexao.GetConn();
             conn.BeginTransaction();
             conn.Insert(md);
