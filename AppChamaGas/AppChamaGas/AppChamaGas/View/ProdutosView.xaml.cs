@@ -25,6 +25,8 @@ namespace AppChamaGas.View
 			InitializeComponent ();
 
             usuarioLogado = Barrel.Current.Get<Pessoa>("pessoa");
+
+            vCarro.Text = Font_Index.dolly;
            
 
 
@@ -40,17 +42,21 @@ namespace AppChamaGas.View
 
             lblTitulo.Text = eh_Distribuidor ? "Meus Produtos" : "Lista de Produtos";
             //btnAdd.IsVisible = eh_Distribuidor ? true : false;
-
+            StkCarro.IsVisible = !eh_Distribuidor;
             IEnumerable<Pessoa> pessoas = await pessoa_Service.ListarAsync();
             IEnumerable<Produto> produtos = await produto_Service.ListarAsync();
             if (eh_Distribuidor)
             {
                 pessoas = pessoas.Where(p => p.Id == usuarioLogado.Id).ToList();
                 produtos = produtos.Where(p => p.FornecedorId == usuarioLogado.Id).ToList();
+                //StkCarro.IsVisible = false;
             }
 
             else
+            { 
                 pessoas = pessoas.Where(p => p.Tipo == "Distribuidor").ToList();
+                //StkCarro.IsVisible = true;
+            }
 
             var request = new GeolocationRequest(GeolocationAccuracy.Best);
             var mPosition = await Geolocation.GetLocationAsync(request);
@@ -117,5 +123,12 @@ namespace AppChamaGas.View
         {
 
         }
+
+        private void GesComprar_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CarrinhoView());
+        }
+
+        
     }
 }

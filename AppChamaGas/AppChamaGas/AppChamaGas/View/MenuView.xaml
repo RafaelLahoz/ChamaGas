@@ -29,7 +29,9 @@
             <Label x:Name="lblSair"
                    Margin="10,0,0,15"
                    Text="Sair"
-                   BackgroundColor="Gray"
+                   BackgroundColor="LightGray"
+                   HorizontalOptions="CenterAndExpand"
+                   FontAttributes="Bold"
                    VerticalOptions="End">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer x:Name="gesSair"

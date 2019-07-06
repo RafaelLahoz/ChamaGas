@@ -31,7 +31,7 @@ namespace AppChamaGas.View
         User_ReqRes md = new User_ReqRes();
 
         //Metodo construtor vai receber com oparamentro uma pessoa
-
+        Pessoa PessoaBC { get { return (Pessoa)BindingContext; } }
         public PessoaView (Pessoa usuario = null)
 		{
 			InitializeComponent ();
@@ -164,6 +164,17 @@ namespace AppChamaGas.View
             tipos.Add("Distribuidor");
             pkTipo.ItemsSource = tipos;
             pkTipo.SelectedIndex = 0;
+        }
+
+        private async void BtnFoto_Clicked(object sender, EventArgs e)
+        {
+            FotoMD md = await Photo.TiraFoto();
+
+            if (md == null)
+                return;
+
+            this.imgFoto.Source = md.fotoArray.ToImageSource();
+            PessoaBC.FotoByte = md.fotoArray;
         }
     }
 }

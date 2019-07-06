@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
-using AppChamaGas.Helper;
+
 
 namespace AppChamaGas.Model
 {
@@ -90,31 +90,17 @@ namespace AppChamaGas.Model
             set { SetProperty(ref imagemVisivel, value); }
         }
 
-        [JsonIgnore]
-        public Command TiraFotoCommand { get; set; }
-
+        
         [JsonIgnore]
         public string TextoBotaoFoto { get; set; }
         public Pessoa()
         {
-            TiraFotoCommand = new Command(TiraFoto);
+           
             BotaoVisivel = true;
             ImagemVisivel = false;
 
             TextoBotaoFoto = Font_Index.camera;
         }
-        public async void TiraFoto()
-        {
-            FotoMD md = await Photo.TiraFoto();
 
-            if (md == null)
-                return;
-
-            BotaoVisivel = false;
-            ImagemVisivel = true;
-
-            this.FotoByte = md.fotoArray;
-            this.FotoSource = md.fotoArray.ToImageSource();
-        }
     }
 }

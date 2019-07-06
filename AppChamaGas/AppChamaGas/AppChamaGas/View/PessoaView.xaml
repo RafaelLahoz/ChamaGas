@@ -16,12 +16,13 @@
                                 <Image x:Name="imgFoto" Source="{Binding FotoSource}" 
                                        Aspect="AspectFit" 
                                        HeightRequest="100" WidthRequest="100"/>
-                                <components:Btn_Icon Text="{Binding TextoBotaoFoto}" 
-                                                     Command="{Binding TiraFotoCommand}" 
+                                <components:Btn_Icon x:Name="btnFoto"
+                                                     Text="{Binding TextoBotaoFoto}" 
                                                      HorizontalOptions="End" VerticalOptions="End"
                                                      FontSize="30"
                                                      BackgroundColor="Transparent"
-                                                     TextColor="Gray"/>
+                                                     TextColor="Gray"
+                                                     Clicked="BtnFoto_Clicked"/>
                             </StackLayout>
                         </ViewCell>
                         <EntryCell x:Name="etRazaoSocial" Placeholder="Nome ou Razao Social" Text="{Binding RazaoSocial}"/>
