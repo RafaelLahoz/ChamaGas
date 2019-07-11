@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using AppChamaGas.Interface;
+using AppChamaGas.ViewModel;
 using Newtonsoft.Json;
 
 namespace AppChamaGas.Model
 {
-    public class Pedido : IAzureTabela
+    public class Pedido : ViewModelBase,IAzureTabela
     {
         public string Id { get; set; }
         public string ClienteId { get; set; }
@@ -19,7 +20,22 @@ namespace AppChamaGas.Model
         public string ValorTotal { get; set; }
         [JsonIgnore, SQLite.Ignore]
         public string NomeFornecedor { get; set; }
-                                
+
+        private double totalPedido;
+        [JsonIgnore]
+        public double TotalPedido
+        {
+            get { return totalPedido; }
+            set { SetProperty(ref totalPedido, value); }
+        }
+
+        private int totalItens;
+        [JsonIgnore]
+        public int TotalItens
+        {
+            get { return totalItens; }
+            set { SetProperty(ref totalItens, value); }
+        }
 
         //Metodo Construtor
         public Pedido(string clienteId, string fornecedorId)

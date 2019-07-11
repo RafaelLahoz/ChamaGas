@@ -4,7 +4,40 @@
              x:Class="AppChamaGas.View.CarrinhoView">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Meu Carrinho" FontAttributes="Bold" FontSize="Large" TextColor="#33691E" HorizontalOptions="Center" Margin="0,15"/>
+            <Label Text="Meu Carrinho" FontAttributes="Bold" FontSize="Medium" TextColor="#33691E" HorizontalOptions="Center" Margin="0,15"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Vlr Tot Pedido" FontAttributes="Bold" FontSize="Medium" TextColor="#33691E" HorizontalOptions="Center" Margin="0,15"/>
+                <Label Text="{Binding TotalPedido, StringFormat='{0:C2}'}" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+            </StackLayout>
+            <ScrollView>
+                <Frame BackgroundColor="#C5E1A5">
+                    <ListView x:Name="lvCarrinho" HasUnevenRows="True" SeparatorVisibility="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid BackgroundColor="White" Margin="2,2,2,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding DescricaoProduto}" TextColor="#33691E" FontSize="Large"/>
+                                        <Button Grid.Column="0" Grid.Row="1" Command="{Binding MenosCommand}" Text="-" WidthRequest="45" HeightRequest="45" BorderRadius="15" BackgroundColor="LightGray" FontAttributes="Bold" HorizontalOptions="Start"/>
+                                        <Label Grid.Column="1" Grid.Row="1" Text="{Binding Quantidade}" TextColor="#33691E" HorizontalOptions="Center" FontSize="Medium" VerticalOptions="Center"/>
+                                        <Button Grid.Column="2" Grid.Row="1" Command="{Binding MaisCommand}" Text="+" WidthRequest="45" HeightRequest="45" BorderRadius="15" BackgroundColor="LightGray" FontAttributes="Bold" HorizontalOptions="Start"/>
+                                        <Label Grid.Column="3" Grid.Row="1" Text="{Binding ValorTotal,, StringFormat='{0:C2}'}" TextColor="#33691E" HorizontalOptions="Center" FontSize="Medium" VerticalOptions="Center"/>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Frame>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

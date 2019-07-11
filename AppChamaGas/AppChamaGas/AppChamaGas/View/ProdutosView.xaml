@@ -22,7 +22,7 @@
             <Label x:Name="lblTitulo" FontAttributes="Bold" FontSize="Large" TextColor="#33691E" HorizontalOptions="Center" Margin="0,15"/>
             <ScrollView>
                 <Frame BackgroundColor="#C5E1A5">
-                    <ListView x:Name="lvProdutos" HasUnevenRows="True" SeparatorVisibility="None">
+                    <ListView x:Name="lvProdutos" HasUnevenRows="True" SeparatorVisibility="None" ItemTapped="LvProdutos_ItemTapped">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -60,11 +60,11 @@
                 <StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Qtde Itens = " FontAttributes="Bold"/>
-                        <Label x:Name="vQtde" FontAttributes="Bold"/>
+                        <Label Text="{Binding TotalItens}" FontAttributes="Bold"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Valor Total = R$ " HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                        <Label x:Name="vVlrTotal" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                        <Label Text="{Binding TotalPedido, StringFormat='{0:C2}'}" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

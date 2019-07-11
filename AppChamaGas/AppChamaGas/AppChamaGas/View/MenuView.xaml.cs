@@ -67,6 +67,12 @@ namespace AppChamaGas.View
                 Icone = Font_Index.clipboard_list,
                 PaginaView = typeof(IntroView)
             });
+            paginas.Add(new Pagina
+            {
+                Titulo = "Meu Carrinho",
+                Icone = Font_Index.shopping_cart,
+                PaginaView = typeof(CarrinhoView)
+            });
             //paginas.Add(new Pagina
             //{
             //    Titulo = "Camera",

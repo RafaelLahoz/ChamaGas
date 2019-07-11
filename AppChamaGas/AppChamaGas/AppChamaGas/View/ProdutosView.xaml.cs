@@ -4,6 +4,7 @@ using AppChamaGas.Services.Azure;
 using MonkeyCache.SQLite;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,24 +14,26 @@ using Xamarin.Forms.Xaml;
 
 namespace AppChamaGas.View
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ProdutosView : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ProdutosView : ContentPage
+    {
         PessoaAzureService pessoa_Service = new PessoaAzureService();
         ProdutoAzureService produto_Service = new ProdutoAzureService();
         Pessoa usuarioLogado;
         bool eh_Distribuidor;
-		public ProdutosView ()
-		{
-			InitializeComponent ();
+        public ProdutosView()
+        {
+            InitializeComponent();
+            this.BindingContext = CarrinhoView.pedido;
 
             usuarioLogado = Barrel.Current.Get<Pessoa>("pessoa");
 
             vCarro.Text = Font_Index.dolly;
-           
+
+            CarrinhoView.Itens.CollectionChanged += ColecaoAlterada;
 
 
-		}
+        }
 
         protected override async void OnAppearing()
         {
@@ -53,7 +56,7 @@ namespace AppChamaGas.View
             }
 
             else
-            { 
+            {
                 pessoas = pessoas.Where(p => p.Tipo == "Distribuidor").ToList();
                 //StkCarro.IsVisible = true;
             }
@@ -106,12 +109,12 @@ namespace AppChamaGas.View
 
         private void AdicionarBotaoNovoProduto()
         {
-            if(this.ToolbarItems.Count == 0)
-            this.ToolbarItems.Add(new ToolbarItem
-            {
-                Text = "Add",
-                Command = new Command(AbrirTelaCadastroProduto),
-            });
+            if (this.ToolbarItems.Count == 0)
+                this.ToolbarItems.Add(new ToolbarItem
+                {
+                    Text = "Add",
+                    Command = new Command(AbrirTelaCadastroProduto),
+                });
         }
 
         private void AbrirTelaCadastroProduto(object obj)
@@ -119,16 +122,26 @@ namespace AppChamaGas.View
             Navigation.PushAsync(new ProdutoCadView());
         }
 
-        private void BtnAdd_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
         private void GesComprar_Tapped(object sender, EventArgs e)
         {
             Navigation.PushAsync(new CarrinhoView());
         }
 
-        
+        private void LvProdutos_ItemTapped(object sender, ItemTappedEventArgs args)
+        {
+            var prd = (Produto)args.Item;
+
+            int proximoId = CarrinhoView.Itens.Count() + 1;
+
+            CarrinhoView.Itens.Add(new PedidoItem("", prd.Id, proximoId.ToString(), 1, prd.Preco) { DescricaoProduto = prd.Descricao, });
+
+        }
+
+        private void ColecaoAlterada(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            CarrinhoView.pedido.TotalPedido = CarrinhoView.Itens.Sum(p => p.ValorTotal);
+            CarrinhoView.pedido.TotalItens = CarrinhoView.Itens.Count();
+
+        }
     }
 }
