@@ -20,9 +20,10 @@
                     Margin="0,3,3,0"
                     Clicked="BtnAdd_Clicked"/>-->
             <Label x:Name="lblTitulo" FontAttributes="Bold" FontSize="Large" TextColor="#33691E" HorizontalOptions="Center" Margin="0,15"/>
+            <SearchBar x:Name="etBusca" Placeholder="Pesquise Produto Aqui..." TextChanged="EtBusca_TextChanged" Unfocused="EtBusca_Unfocused"/>
             <ScrollView>
                 <Frame BackgroundColor="#C5E1A5">
-                    <ListView x:Name="lvProdutos" HasUnevenRows="True" SeparatorVisibility="None" ItemTapped="LvProdutos_ItemTapped">
+                    <ListView x:Name="lvProdutos" HasUnevenRows="True" SeparatorVisibility="None" ItemTapped="LvProdutos_ItemTapped" ItemSelected="LvProdutos_ItemSelected">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>

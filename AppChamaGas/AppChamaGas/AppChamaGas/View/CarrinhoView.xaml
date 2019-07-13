@@ -38,6 +38,7 @@
                     </ListView>
                 </Frame>
             </ScrollView>
+            <Button x:Name="btnSalvaCarrinho" Text="Finalizar Compra" BackgroundColor="LightGray" Clicked="BtnSalvaCarrinho_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

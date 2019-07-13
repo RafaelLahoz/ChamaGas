@@ -32,11 +32,12 @@ namespace AppChamaGas.Services.Azure
             try
             {
                 await tabelaAzure.InsertAsync(registro);
+
                 return true;
             }
             catch (Exception erro)
             {
-                Debug.WriteLine($"Erro Azure:{erro}");
+                Debug.WriteLine($"Erro Azure:{erro.Message}");
                 return false;
             }
 

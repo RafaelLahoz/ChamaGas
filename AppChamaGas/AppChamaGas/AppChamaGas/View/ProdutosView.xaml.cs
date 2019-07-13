@@ -24,20 +24,23 @@ namespace AppChamaGas.View
         public ProdutosView()
         {
             InitializeComponent();
-            this.BindingContext = CarrinhoView.pedido;
-
             usuarioLogado = Barrel.Current.Get<Pessoa>("pessoa");
-
             vCarro.Text = Font_Index.dolly;
+        }
 
+        private void PopuleBindings()
+        {
+            CarrinhoView.pedido.DelegateAtualizadorLista += ColecaoAlterada;
+            this.BindingContext = CarrinhoView.pedido;
             CarrinhoView.Itens.CollectionChanged += ColecaoAlterada;
-
-
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+            if (string.IsNullOrEmpty(CarrinhoView.pedido.FornecedorId))
+                PopuleBindings();
+
             eh_Distribuidor = usuarioLogado.Tipo == "Distribuidor";
 
             if (eh_Distribuidor)
@@ -133,15 +136,32 @@ namespace AppChamaGas.View
 
             int proximoId = CarrinhoView.Itens.Count() + 1;
 
-            CarrinhoView.Itens.Add(new PedidoItem("", prd.Id, proximoId.ToString(), 1, prd.Preco) { DescricaoProduto = prd.Descricao, });
+            CarrinhoView.Itens.Add(new PedidoItem("", prd.Id, proximoId.ToString(), 1, prd.Preco) { DescricaoProduto = prd.Descricao, PedidoPai = CarrinhoView.pedido });
+            CarrinhoView.pedido.FornecedorId = prd.FornecedorId;
 
+            
         }
 
-        private void ColecaoAlterada(object sender, NotifyCollectionChangedEventArgs e)
+        private void ColecaoAlterada(object sender, EventArgs e)
         {
             CarrinhoView.pedido.TotalPedido = CarrinhoView.Itens.Sum(p => p.ValorTotal);
             CarrinhoView.pedido.TotalItens = CarrinhoView.Itens.Count();
 
+        }
+
+        private void EtBusca_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.DisplayAlert("Msg", "Texto Alterado", "Ok");
+        }
+
+        private void EtBusca_Unfocused(object sender, FocusEventArgs e)
+        {
+            this.DisplayAlert("Msg", "Texto Desfocado", "Ok");
+        }
+
+        private void LvProdutos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            lvProdutos.SelectedItem = null;
         }
     }
 }

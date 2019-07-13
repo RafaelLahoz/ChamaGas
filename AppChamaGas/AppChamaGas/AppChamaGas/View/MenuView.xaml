@@ -21,7 +21,6 @@
                                 <c:Icon Text="{Binding Icone}" Margin="20, 5" TextColor="{Binding CorLetra}" VerticalOptions="Center"/>
                                 <Label Text="{Binding Titulo}" TextColor="{Binding CorLetra}" VerticalOptions="Center"/>
                             </StackLayout>
-                            
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>                

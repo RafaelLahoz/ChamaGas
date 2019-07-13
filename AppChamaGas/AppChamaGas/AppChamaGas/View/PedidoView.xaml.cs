@@ -51,35 +51,35 @@ namespace AppChamaGas.View
 
                 var itensFiltrados = pedidosItens.Where(i => i.PedidoId == pedido.Id).ToList();
                 var total = itensFiltrados.Sum(i => i.ValorTotal);
-                pedido.ValorTotal = "R$ " + total.ToString("C2");
+                //pedido.ValorTotal = "R$ " + total.ToString("C2");
             }
 
-            //lvPedido.ItemsSource = pedidos;
+            lvPedido.ItemsSource = pedidos;
 
-            lvPedido.ItemsSource = new List<Pedido>
-            {
-                new Pedido("10", "5")
-                {
-                    DataAgenda = DateTime.Now,
-                    DataEmissao = DateTime.Now,
-                    DataEntrega = DateTime.Now,
-                    Id = "1",
-                    NomeFornecedor = "João do Gás",
-                    ValorTotal = "R$ 67,45"
+            //lvPedido.ItemsSource = new List<Pedido>
+            //{
+            //    new Pedido("10", "5")
+            //    {
+            //        DataAgenda = DateTime.Now,
+            //        DataEmissao = DateTime.Now,
+            //        DataEntrega = DateTime.Now,
+            //        Id = "1",
+            //        NomeFornecedor = "João do Gás",
+            //        ValorTotal = "R$ 67,45"
 
-                },
+            //    },
 
-                new Pedido("15", "8")
-                {
-                    DataAgenda = DateTime.Now,
-                    DataEmissao = DateTime.Now,
-                    DataEntrega = DateTime.Now,
-                    Id = "2",
-                    NomeFornecedor = "Rui Gás",
-                    ValorTotal = "R$ 85,90"
+            //    new Pedido("15", "8")
+            //    {
+            //        DataAgenda = DateTime.Now,
+            //        DataEmissao = DateTime.Now,
+            //        DataEntrega = DateTime.Now,
+            //        Id = "2",
+            //        NomeFornecedor = "Rui Gás",
+            //        ValorTotal = "R$ 85,90"
 
-                }
-            };
+            //    }
+            //};
         }
     }
 }

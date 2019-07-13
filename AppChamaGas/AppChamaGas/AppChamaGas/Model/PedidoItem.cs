@@ -21,6 +21,8 @@ namespace AppChamaGas.Model
         public Command MenosCommand { get; set; }
         [JsonIgnore]
         public string DescricaoProduto { get; set; }
+        [JsonIgnore]
+        public Pedido PedidoPai { get; set; }
 
         //Calculado internamente na classe
         // ninguem consegue trocar o valor na tela.
@@ -56,13 +58,21 @@ namespace AppChamaGas.Model
         }
         private void Menos()
         {
-            Quantidade -= 1;
-            ValorTotal = Quantidade * Preco;
+            if (Quantidade >0)
+            {
+                Quantidade -= 1;
+                ValorTotal = Quantidade * Preco;
+
+                PedidoPai.AtualizarLista();
+
+            }
         }
         private void Mais()
         {
             Quantidade += 1;
             ValorTotal = Quantidade * Preco;
+
+            PedidoPai.AtualizarLista();
         }
 
     }
