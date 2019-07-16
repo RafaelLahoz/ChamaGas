@@ -16,6 +16,23 @@ namespace AppChamaGas.Model
         public DateTime DataAgenda { get; set; }
         public DateTime DataEntrega { get; set; }
 
+        [JsonIgnore]
+        public string Entrega
+        {
+            get
+            {
+                if (DataEntrega == DateTime.MinValue)
+                {
+                    return string.Empty;
+                }
+                return DataEntrega.ToString();
+            }
+            set
+            {
+                DataEntrega = DateTime.Parse(value, System.Globalization.CultureInfo.InvariantCulture);
+            }
+        }
+
         
         [JsonIgnore, SQLite.Ignore]
         public string NomeFornecedor { get; set; }
@@ -42,7 +59,8 @@ namespace AppChamaGas.Model
             ClienteId = clienteId;
             FornecedorId = fornecedorId;
             DataEmissao = DateTime.Now;
-            DataAgenda = DateTime.Now.AddHours(3);
+            //DataAgenda = DateTime.Now.AddHours(3);
+            
         }
 
         public event EventHandler DelegateAtualizadorLista;

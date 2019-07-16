@@ -30,10 +30,10 @@
                     <TableSection>
                         <TextCell x:Name="tcTit2" Text="Endereço" TextColor="#33691E"/>
                         <ViewCell>
-                            <Entry x:Name="etCEP" Placeholder="Informe o CEP" Unfocused="EtCEP_Unfocused" Margin="15,0,0,0" Text="{Binding CEP}"/>
+                            <Entry x:Name="etCEP" Placeholder="Informe o CEP" TextChanged="EtCEP_TextChanged" Margin="15,0,0,0" Text="{Binding CEP}"/>
                         </ViewCell>
                         <EntryCell x:Name="etLogradouro" Placeholder="Logradouro" Text="{Binding Endereco}"/>
-                        <EntryCell x:Name="etNumero" Placeholder="Numero" Text="{Binding Numero}"/>
+                        <EntryCell x:Name="etNumero" Placeholder="Numero" Text="{Binding Numero}" Keyboard="Numeric"/>
                         <EntryCell x:Name="etComplemento" Placeholder="Complemento"/>
                         <EntryCell x:Name="etBairro" Placeholder="Bairro" Text="{Binding Bairro}"/>
                         <EntryCell x:Name="etLocalidade" Placeholder="Localidade" Text="{Binding Cidade}"/>

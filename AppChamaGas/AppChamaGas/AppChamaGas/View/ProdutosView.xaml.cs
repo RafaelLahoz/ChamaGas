@@ -152,6 +152,7 @@ namespace AppChamaGas.View
         private void EtBusca_TextChanged(object sender, TextChangedEventArgs e)
         {
             this.DisplayAlert("Msg", "Texto Alterado", "Ok");
+
         }
 
         private void EtBusca_Unfocused(object sender, FocusEventArgs e)

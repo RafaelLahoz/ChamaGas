@@ -176,5 +176,33 @@ namespace AppChamaGas.View
             this.imgFoto.Source = md.fotoArray.ToImageSource();
             PessoaBC.FotoByte = md.fotoArray;
         }
+
+        private async void EtCEP_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (etCEP.Text.Length == 8)
+            {
+                var cep_ret = await client_cep.Get<Cep>(etCEP.Text);
+
+                this.etCEP.Text = cep_ret.CEP;
+                this.etLogradouro.Text = cep_ret.Logradouro;
+                //this.etComplemento.Text = cep_ret.Complemento;
+                this.etBairro.Text = cep_ret.Bairro;
+                this.etLocalidade.Text = cep_ret.Localidade;
+                this.etUF.Text = cep_ret.Uf;
+
+                //var pessoa_ret = await client_api.get<Pessoa>("");
+                //this.etPessoaNome.Text = pessoa_ret.Nome;
+                //var obj_reqres_user = new ReqRes_Service("users");
+
+                await client_ReqRes_user.Get<RetornoTeste>("2");
+
+                md.name = cep_ret.Bairro;
+                md.job = cep_ret.Localidade;
+
+                var retorno = await client_ReqRes_user.Post<User_ReqRes>(md);
+                var atualiza = await client_ReqRes_user.Put<User_ReqRes>(md);
+            }
+            
+        }
     }
 }

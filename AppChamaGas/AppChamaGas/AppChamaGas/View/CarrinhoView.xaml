@@ -30,7 +30,7 @@
                                         <Button Grid.Column="0" Grid.Row="1" Command="{Binding MenosCommand}" Text="-" WidthRequest="45" HeightRequest="45" BorderRadius="15" BackgroundColor="LightGray" FontAttributes="Bold" HorizontalOptions="Start"/>
                                         <Label Grid.Column="1" Grid.Row="1" Text="{Binding Quantidade}" TextColor="#33691E" HorizontalOptions="Center" FontSize="Medium" VerticalOptions="Center"/>
                                         <Button Grid.Column="2" Grid.Row="1" Command="{Binding MaisCommand}" Text="+" WidthRequest="45" HeightRequest="45" BorderRadius="15" BackgroundColor="LightGray" FontAttributes="Bold" HorizontalOptions="Start"/>
-                                        <Label Grid.Column="3" Grid.Row="1" Text="{Binding ValorTotal,, StringFormat='{0:C2}'}" TextColor="#33691E" HorizontalOptions="Center" FontSize="Medium" VerticalOptions="Center"/>
+                                        <Label Grid.Column="3" Grid.Row="1" Text="{Binding ValorTotal, StringFormat='{0:C2}'}" TextColor="#33691E" HorizontalOptions="Center" FontSize="Medium" VerticalOptions="Center"/>
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>
@@ -38,6 +38,15 @@
                     </ListView>
                 </Frame>
             </ScrollView>
+            <StackLayout Orientation="Horizontal" BackgroundColor="Beige">
+                <Label Text="Data do Pedido" FontSize="Small" VerticalOptions="Center"/>
+                <Entry x:Name="etDtEmissao" Text="{Binding DataEmissao, StringFormat='{0:dd/MM/yyyy hh:mm}'}" FontSize="Small" HorizontalOptions="End"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" BackgroundColor="Beige">
+                <Label Text="Agendar Entrega para" FontSize="Small" VerticalOptions="Center"/>
+                <DatePicker x:Name="etDtAgenda" Date="{Binding DataAgenda, StringFormat='{0:dd/MM/yyyy}'}" FontSize="Small" HorizontalOptions="End"/>
+                <TimePicker x:Name="etTmAgenda" Time="{Binding DataAgenda, StringFormat='{0:hh:mm}'}" FontSize="Small" HorizontalOptions="End"/>
+            </StackLayout>
             <Button x:Name="btnSalvaCarrinho" Text="Finalizar Compra" BackgroundColor="LightGray" Clicked="BtnSalvaCarrinho_Clicked"/>
         </StackLayout>
     </ContentPage.Content>

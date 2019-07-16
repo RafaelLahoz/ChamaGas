@@ -108,6 +108,7 @@ namespace AppChamaGas.View
                 else if (pagina.PaginaView == typeof(CameraView))
                     paginaview = new CameraView();
                 else
+
                     paginaview = Activator.CreateInstance(pagina.PaginaView) as Page;
 
 
