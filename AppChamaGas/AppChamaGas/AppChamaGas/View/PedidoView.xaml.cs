@@ -18,12 +18,40 @@ namespace AppChamaGas.View
         PedidoAzureService pedido_Service = new PedidoAzureService();
         PedidoItemAzureService pedidoItens_Service = new PedidoItemAzureService();
         PessoaAzureService pessoa_Service = new PessoaAzureService();
+        ProdutoAzureService produto_Service = new ProdutoAzureService();
         Pessoa usuarioLogado;
+        IEnumerable<Produto> listaProdutos;
         public PedidoView ()
 		{
 			InitializeComponent ();
             usuarioLogado = Barrel.Current.Get<Pessoa>("pessoa");
+
+            this.Appearing += CarregaProdutos;
 		}
+
+        private async void CarregaProdutos(object sender, EventArgs e)
+        {
+            listaProdutos = await produto_Service.ListarAsync();
+        }
+
+        private void LvPedido_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var ped = (Pedido)e.Item;
+
+            //while (listaProdutos == null) continue;
+
+            if (listaProdutos == null)
+            {
+                DisplayAlert("Alerta", "Estamos carregando tudo para você. Tente novamente", "Ok");
+                return;
+            }
+
+            foreach (var item in ped.listaItens)
+                item.DescricaoProduto = listaProdutos.Where(p => p.Id == item.ProdutoId).FirstOrDefault().Descricao;
+
+
+            Navigation.PushAsync(new ConsultaPedidoView(ped));
+        }
 
         protected override async void OnAppearing()
         {
@@ -43,13 +71,15 @@ namespace AppChamaGas.View
 
             foreach (var pedido in pedidos)
             {
-                Pessoa pessoa = eh_distribuidor 
-                    ? pessoas.Where(p => p.Id == pedido.ClienteId).FirstOrDefault()
-                    : pessoas.Where(p => p.Id == pedido.FornecedorId).FirstOrDefault();
+                //Pessoa pessoa = eh_distribuidor 
+                //    ? pessoas.Where(p => p.Id == pedido.ClienteId).FirstOrDefault()
+                //    : pessoas.Where(p => p.Id == pedido.FornecedorId).FirstOrDefault();
 
-                pedido.NomeFornecedor = pessoa.RazaoSocial;
+                pedido.NomeFornecedor = pessoas.Where(p => p.Id == pedido.ClienteId).FirstOrDefault().RazaoSocial;
+                pedido.NomeCliente = pessoas.Where(p => p.Id == pedido.FornecedorId).FirstOrDefault().RazaoSocial;
 
                 var itensFiltrados = pedidosItens.Where(i => i.PedidoId == pedido.Id).ToList();
+                pedido.listaItens = itensFiltrados;
                 var total = itensFiltrados.Sum(i => i.ValorTotal);
                 //pedido.ValorTotal = "R$ " + total.ToString("C2");
             }
@@ -81,5 +111,7 @@ namespace AppChamaGas.View
             //    }
             //};
         }
+
+        
     }
 }

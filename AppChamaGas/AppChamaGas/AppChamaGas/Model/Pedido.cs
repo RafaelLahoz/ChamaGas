@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using AppChamaGas.Interface;
+using AppChamaGas.View;
 using AppChamaGas.ViewModel;
 using Newtonsoft.Json;
 
@@ -36,6 +37,12 @@ namespace AppChamaGas.Model
         
         [JsonIgnore, SQLite.Ignore]
         public string NomeFornecedor { get; set; }
+
+        [JsonIgnore, SQLite.Ignore]
+        public string NomeCliente { get; set; }
+
+        [JsonIgnore, SQLite.Ignore]
+        public List<PedidoItem> listaItens { get; set; }
 
         private double totalPedido;
         [JsonIgnore]

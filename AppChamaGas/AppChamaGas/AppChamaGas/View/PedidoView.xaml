@@ -9,7 +9,7 @@
                 VerticalOptions="Start" 
                 HorizontalOptions="CenterAndExpand" />
             <Frame BackgroundColor="#C5E1A5">
-                <ListView x:Name="lvPedido" HasUnevenRows="True" SeparatorVisibility="None">
+                <ListView x:Name="lvPedido" HasUnevenRows="True" SeparatorVisibility="None" ItemTapped="LvPedido_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

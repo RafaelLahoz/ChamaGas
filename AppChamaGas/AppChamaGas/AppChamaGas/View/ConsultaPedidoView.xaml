@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppChamaGas.View.ConsultaPedidoView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="lblLista Pedido"/>
+            <Label x:Name="lblID"/>
+            <Label x:Name="lblDataEmissao"/>
+            <Label x:Name="lblNomeForn"/>
+            <Label x:Name="lblNomeCliente"/>
+            <ListView x:Name="lvItens">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding DescricaoProduto}" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding Quantidade}" HorizontalOptions="End"/>
+                                <Label Text="{Binding ValorTotal}" HorizontalOptions="End"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Text="Total: R$ "/>
+                <Label Grid.Column="1" Grid.Row="0" x:Name="lblTotal"/>
+                <Label Grid.Column="0" Grid.Row="1" Text="Solicitado para: x"/>
+                <Label Grid.Column="1" Grid.Row="1" x:Name="lblSolicitado"/>
+                <Label Grid.Column="0" Grid.Row="2" x:Name="lblLBLEntregue"  Text="Entregue em: "/>
+                <Label Grid.Column="1" Grid.Row="2" x:Name="lblEntregue"/>
+                <Button Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" x:Name="btnEntregue" Text="ENTREGAR" IsVisible="False" Clicked="BtnEntregue_Clicked"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
