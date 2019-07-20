@@ -4,7 +4,7 @@
              x:Class="AppChamaGas.View.ConsultaPedidoView">
     <ContentPage.Content>
         <StackLayout>
-            <Label x:Name="lblLista Pedido"/>
+            <Label x:Name="lblListaPedido"/>
             <Label x:Name="lblID"/>
             <Label x:Name="lblDataEmissao"/>
             <Label x:Name="lblNomeForn"/>
