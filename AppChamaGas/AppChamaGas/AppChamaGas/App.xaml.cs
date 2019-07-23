@@ -25,6 +25,7 @@ namespace AppChamaGas
             //Remove dados expirados
             Barrel.Current.EmptyExpired();
             MainPage = new LoginView();
+            
         }
 
         protected override void OnStart()

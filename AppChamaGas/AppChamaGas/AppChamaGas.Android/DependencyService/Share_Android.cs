@@ -41,13 +41,14 @@ namespace AppChamaGas.Droid.DependencyService
             //        break;
             //}
 
+            var uri = Android.Net.Uri.Parse("file:/" + path);
+            var contentType = "application/html";
             var intent = new Intent(Intent.ActionSend);
             intent.SetType("application/html");
-            //intent.PutExtra(Intent.ExtraStream, Uri.Parse("file://" + path));
-            intent.PutExtra(Intent.ExtraStream, new Java.IO.File(path));
-            intent.PutExtra(Intent.ExtraText, string.Empty);
-            //intent.PutExtra(Intent.ExtraSubject, message ?? string.Empty);
-
+            intent.PutExtra(Intent.ExtraStream, uri);
+            intent.PutExtra(Intent.ExtraText, title);
+            intent.PutExtra(Intent.ExtraSubject, string.Empty);
+            intent.SetType(contentType);
             var chooserIntent = Intent.CreateChooser(intent, title ?? string.Empty);
             chooserIntent.SetFlags(ActivityFlags.ClearTop);
             chooserIntent.SetFlags(ActivityFlags.NewTask);

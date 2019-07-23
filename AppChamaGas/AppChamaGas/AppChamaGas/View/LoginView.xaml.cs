@@ -22,7 +22,7 @@ namespace AppChamaGas.View
 		{
 			InitializeComponent ();
             pessoaAzureService = new PessoaAzureService();
-            usuarioModel = new UsuarioModel();
+            usuarioModel = new UsuarioModel() { Email = "teste@uia.com", Senha="87654321"};
             this.BindingContext = usuarioModel;
 		}
 
